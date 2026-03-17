@@ -16,12 +16,20 @@
       }
 
       try {
-        hasSeenSplash = sessionStorage.getItem('bpMobileSplashSeen') === '1';
+        hasSeenSplash = sessionStorage.getItem('splashShown') === 'true';
       } catch (e) {
         hasSeenSplash = false;
       }
 
       window.__bpShowMobileSplash = isMobile && !hasSeenSplash;
+
+      if (window.__bpShowMobileSplash) {
+        try {
+          sessionStorage.setItem('splashShown', 'true');
+        } catch (e) {
+          // Ignore storage failures and continue loading the page.
+        }
+      }
 
       if (window.__bpShowMobileSplash) {
         document.documentElement.classList.add('bp-splash-pending');
@@ -175,11 +183,6 @@
         finished = true;
         document.documentElement.classList.remove('bp-splash-pending');
 
-        try {
-          sessionStorage.setItem('bpMobileSplashSeen', '1');
-        } catch (e) {
-          // Ignore storage failures and continue loading the page.
-        }
       }
 
       if (reduceMotion) {

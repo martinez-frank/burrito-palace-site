@@ -549,7 +549,7 @@
 <body>
   <header class="top-header" aria-label="Primary navigation">
     <div class="container">
-      <a href="/index.html" class="nav-brand">
+      <a href="/index.html" class="nav-brand" id="homeLogoLink">
         <img src="/images/burrito-palace-logo.png" alt="Burrito Palace Logo" class="logo">
         <span class="brand-text">Burrito Palace</span>
       </a>
@@ -863,6 +863,15 @@
   <script>
     (function () {
       const sections = Array.from(document.querySelectorAll('.menu-section'));
+      const homeLogoLink = document.getElementById('homeLogoLink');
+
+      if (homeLogoLink) {
+        homeLogoLink.addEventListener('click', (event) => {
+          event.preventDefault();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
+
       const chips = Array.from(document.querySelectorAll('.category-chip'));
       const mobile = window.matchMedia('(max-width: 759px)');
 
