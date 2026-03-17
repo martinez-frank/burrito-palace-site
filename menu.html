@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Burrito Palace Menu | Burritos, Plates, Seafood & Specials</title>
+  <meta name="description" content="Browse the Burrito Palace menu with burritos, breakfast, a la carta, plates, seafood, soups, sides, drinks, and specials.">
+  <style>
+    :root {
+      --cream: #f8f0e2;
+      --cream-2: #fffaf1;
+      --brown: #4b291a;
+      --brown-soft: #7b5a48;
+      --accent: #c73728;
+      --accent-dark: #a82d21;
+      --card: #fffefc;
+      --border: #e7d6be;
+      --shadow: 0 10px 28px rgba(70, 40, 20, 0.08);
+      --radius: 16px;
+      --radius-pill: 999px;
+      --header-height: 72px;
+      --filter-height: 58px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: calc(var(--header-height) + var(--filter-height) + 16px);
+    }
+
+    body {
+      margin: 0;
+      font-family: "Inter", "Segoe UI", Arial, sans-serif;
+      background: var(--cream);
+      color: var(--brown);
+      line-height: 1.45;
+    }
+
+    img { max-width: 100%; display: block; }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(1100px, 92vw);
+      margin: 0 auto;
+    }
+
+    .top-header {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: rgba(248, 240, 226, 0.97);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid var(--border);
+      min-height: var(--header-height);
+      display: flex;
+      align-items: center;
+    }
+
+    .top-header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 10px 0;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      font-size: 1.15rem;
+      color: var(--brown);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      font-weight: 600;
+      color: var(--brown-soft);
+      font-size: 0.93rem;
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 8px;
+      margin-left: auto;
+    }
+
+    .btn {
+      border: 0;
+      border-radius: var(--radius-pill);
+      padding: 10px 14px;
+      font-weight: 700;
+      font-size: 0.88rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+    }
+
+    .btn-secondary {
+      color: var(--brown);
+      background: #f2e2ca;
+    }
+
+    .btn-primary {
+      color: #fff;
+      background: var(--accent);
+    }
+
+    .btn-primary:hover,
+    .btn-primary:focus-visible { background: var(--accent-dark); }
+
+    .category-bar {
+      position: sticky;
+      top: var(--header-height);
+      z-index: 20;
+      background: rgba(255, 250, 241, 0.98);
+      border-bottom: 1px solid var(--border);
+      min-height: var(--filter-height);
+      display: flex;
+      align-items: center;
+    }
+
+    .category-scroll {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 8px 0;
+      scrollbar-width: thin;
+    }
+
+    .category-chip {
+      white-space: nowrap;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-pill);
+      background: #fff;
+      color: var(--brown-soft);
+      font-weight: 700;
+      font-size: 0.84rem;
+      padding: 10px 14px;
+      transition: all 0.2s ease;
+    }
+
+    .category-chip.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    .hero {
+      padding: 24px 0 12px;
+    }
+
+    .hero-card {
+      border: 1px solid var(--border);
+      background: linear-gradient(160deg, #fffaf2, #f6e6ce);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      padding: 24px;
+      display: grid;
+      gap: 12px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(1.6rem, 3.6vw, 2.2rem);
+      line-height: 1.2;
+    }
+
+    .hero p {
+      margin: 0;
+      color: var(--brown-soft);
+      max-width: 62ch;
+    }
+
+    .menu-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      padding: 8px 0 88px;
+    }
+
+    .menu-section {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--card);
+      box-shadow: var(--shadow);
+      overflow: clip;
+    }
+
+    .section-toggle {
+      width: 100%;
+      background: transparent;
+      border: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      text-align: left;
+      color: var(--brown);
+      padding: 16px 16px 14px;
+      cursor: pointer;
+    }
+
+    .section-title-wrap h2 {
+      margin: 0;
+      font-size: 1.15rem;
+    }
+
+    .section-subtitle {
+      display: block;
+      color: var(--brown-soft);
+      font-size: 0.88rem;
+      margin-top: 4px;
+    }
+
+    .section-toggle .chevron {
+      font-weight: 800;
+      color: var(--brown-soft);
+      transition: transform 0.2s ease;
+    }
+
+    .menu-section.open .section-toggle .chevron { transform: rotate(180deg); }
+
+    .section-content {
+      display: none;
+      padding: 0 16px 18px;
+    }
+
+    .menu-section.open .section-content { display: block; }
+
+    .grid-two {
+      display: grid;
+      gap: 16px;
+    }
+
+    h3 {
+      margin: 14px 0 8px;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      color: #7d4f35;
+    }
+
+    ul.menu-items {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 8px;
+    }
+
+    .menu-item {
+      border: 1px solid #f0e0c8;
+      border-radius: 12px;
+      padding: 10px 12px;
+      background: #fff;
+    }
+
+    .item-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      font-weight: 700;
+    }
+
+    .price { color: var(--accent); white-space: nowrap; }
+
+    .desc {
+      font-size: 0.88rem;
+      color: var(--brown-soft);
+      margin-top: 4px;
+    }
+
+    .note {
+      font-size: 0.86rem;
+      color: var(--brown-soft);
+      margin: 10px 0 0;
+    }
+
+    .section-actions {
+      margin-top: 12px;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .section-actions .btn {
+      font-size: 0.82rem;
+      padding: 9px 13px;
+      min-height: 36px;
+    }
+
+    .mobile-order-bar {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 40;
+      padding: 10px 12px 14px;
+      background: linear-gradient(to top, rgba(248, 240, 226, 1), rgba(248, 240, 226, 0.92));
+      border-top: 1px solid var(--border);
+      display: flex;
+      gap: 8px;
+    }
+
+    .mobile-order-bar .btn {
+      flex: 1;
+      min-height: 44px;
+    }
+
+    @media (min-width: 760px) {
+      :root {
+        --header-height: 66px;
+        --filter-height: 54px;
+      }
+
+      .top-header .container { flex-wrap: nowrap; }
+
+      .menu-layout {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+        padding-bottom: 22px;
+      }
+
+      .menu-section {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .section-toggle { cursor: default; }
+      .section-toggle .chevron { display: none; }
+
+      .section-content {
+        display: block;
+        padding-bottom: 16px;
+      }
+
+      .mobile-order-bar { display: none; }
+    }
+
+    @media (max-width: 759px) {
+      .nav-links { order: 3; width: 100%; }
+      .header-actions { margin-left: 0; }
+    }
+  </style>
+</head>
+<body>
+  <header class="top-header" aria-label="Primary navigation">
+    <div class="container">
+      <a class="brand" href="/">Burrito Palace</a>
+      <nav class="nav-links">
+        <a href="/menu.html" aria-current="page">Menu</a>
+        <a href="#" aria-label="About section link placeholder">About</a>
+        <a href="#" aria-label="Catering section link placeholder">Catering</a>
+        <a href="#" aria-label="Contact section link placeholder">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <button class="btn btn-secondary" type="button" aria-label="Call Burrito Palace">Call</button>
+        <a class="btn btn-primary" href="#order">Order Online</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="category-bar" aria-label="Menu categories">
+    <div class="container">
+      <nav class="category-scroll" id="categoryNav">
+        <a class="category-chip active" href="#all" data-target="all">All</a>
+        <a class="category-chip" href="#burritos" data-target="burritos">Burritos</a>
+        <a class="category-chip" href="#breakfast" data-target="breakfast">Breakfast</a>
+        <a class="category-chip" href="#a-la-carta" data-target="a-la-carta">A La Carta</a>
+        <a class="category-chip" href="#plates" data-target="plates">Plates</a>
+        <a class="category-chip" href="#seafood" data-target="seafood">Seafood</a>
+        <a class="category-chip" href="#soups" data-target="soups">Soups</a>
+        <a class="category-chip" href="#sides" data-target="sides">Sides</a>
+        <a class="category-chip" href="#drinks" data-target="drinks">Drinks</a>
+        <a class="category-chip" href="#specials" data-target="specials">Specials</a>
+      </nav>
+    </div>
+  </div>
+
+  <main class="container" id="all">
+    <section class="hero">
+      <div class="hero-card">
+        <h1>Order Fast. Eat Fresh. Real Burrito Palace Favorites.</h1>
+        <p>Browse our full menu by category, open a section, and place your order online for pickup.</p>
+        <div class="section-actions"><a class="btn btn-primary" id="order" href="#">Start Order</a></div>
+      </div>
+    </section>
+
+    <section class="menu-layout" id="menuSections">
+      <article class="menu-section open" id="burritos" data-category="burritos">
+        <button class="section-toggle" aria-expanded="true" aria-controls="content-burritos">
+          <span class="section-title-wrap"><h2>Burritos</h2></span><span class="chevron">⌄</span>
+        </button>
+        <div class="section-content" id="content-burritos">
+          <ul class="menu-items">
+            <li class="menu-item"><div class="item-row"><span>1. Carne Asada (Steak)</span></div></li>
+            <li class="menu-item"><div class="item-row"><span>2. Pollo Asada (Grilled Chicken)</span></div></li>
+            <li class="menu-item"><div class="item-row"><span>3. Al Pastor (Marinated Pork)</span></div></li>
+            <li class="menu-item"><div class="item-row"><span>4. Carnitas (Shredded Pork)</span></div></li>
+            <li class="menu-item"><div class="item-row"><span>5. Carne Guizada (Shredded Beef)</span></div></li>
+            <li class="menu-item"><div class="item-row"><span>6. Pollo Guizado (Shredded Chicken)</span></div></li>
+            <li class="menu-item"><div class="item-row"><span>7. Chile Verde (Pork Chile)</span></div></li>
+            <li class="menu-item"><div class="item-row"><span>8. Vegetariano (Vegetarian)</span></div></li>
+            <li class="menu-item"><div class="item-row"><span>9. Frijoles Y Queso (Bean &amp; Cheese)</span></div></li>
+            <li class="menu-item"><div class="item-row"><span>10. Camaron (Shrimp)</span></div></li>
+            <li class="menu-item"><div class="item-row"><span>Lengua (Beef Tongue)</span></div></li>
+            <li class="menu-item"><div class="item-row"><span>Tripa (Intestine)</span></div></li>
+          </ul>
+
+          <h3>Size Options</h3>
+          <ul class="menu-items">
+            <li class="menu-item"><div class="item-row"><span>Regular</span><span class="price">$11.65</span></div><p class="desc">Rice, beans, pico de gallo</p><p class="desc">Refried beans contain pieces of pork.</p></li>
+            <li class="menu-item"><div class="item-row"><span>Super</span><span class="price">$13.15</span></div><p class="desc">Rice, beans, lettuce, cheese, sour cream, guacamole, pico de gallo</p></li>
+          </ul>
+
+          <h3>Extras</h3>
+          <ul class="menu-items">
+            <li class="menu-item"><div class="item-row"><span>Wet Burrito</span><span class="price">$2.25</span></div></li>
+            <li class="menu-item"><div class="item-row"><span>Pickled, Fresh Or Grilled Jalapeños</span><span class="price">$1.25</span></div></li>
+            <li class="menu-item"><div class="item-row"><span>Grilled Jalapeño (2)</span><span class="price">$2.50</span></div></li>
+            <li class="menu-item"><div class="item-row"><span>Guacamole or Avocado Slices</span><span class="price">$1.75</span></div></li>
+            <li class="menu-item"><div class="item-row"><span>Sour Cream or Cheese</span><span class="price">$1.25</span></div></li>
+            <li class="menu-item"><div class="item-row"><span>Lettuce, Tomato, or Onion</span><span class="price">$1.00</span></div></li>
+            <li class="menu-item"><div class="item-row"><span>Two Meat Burrito</span><span class="price">$2.50</span></div></li>
+            <li class="menu-item"><div class="item-row"><span>Extra Meat</span><span class="price">$3.50</span></div></li>
+          </ul>
+
+          <p class="note">Whole beans available upon request.</p>
+          <p class="note">No substitutions, any additions will be extra. Thank you.</p>
+          <div class="section-actions"><a class="btn btn-primary" href="#order">Order Burritos</a></div>
+        </div>
+      </article>
+
+      <article class="menu-section" id="breakfast" data-category="breakfast">
+        <button class="section-toggle" aria-expanded="false" aria-controls="content-breakfast">
+          <span class="section-title-wrap"><h2>Breakfast</h2><span class="section-subtitle">Choice of meat, with scrambled eggs, potatoes, and cheese</span></span><span class="chevron">⌄</span>
+        </button>
+        <div class="section-content" id="content-breakfast">
+          <ul class="menu-items">
+            <li class="menu-item"><div class="item-row"><span>Carne Asada (Steak)</span><span class="price">$11.90</span></div></li>
+            <li class="menu-item"><div class="item-row"><span>Chorizo (Mexican Sausage)</span><span class="price">$11.90</span></div></li>
+            <li class="menu-item"><div class="item-row"><span>Tocino (Bacon)</span><span class="price">$11.90</span></div></li>
+            <li class="menu-item"><div class="item-row"><span>Jamon (Ham)</span><span class="price">$11.90</span></div></li>
+          </ul>
+          <div class="section-actions"><a class="btn btn-primary" href="#order">Order Breakfast</a></div>
+        </div>
+      </article>
+
+      <article class="menu-section" id="a-la-carta" data-category="a-la-carta">
+        <button class="section-toggle" aria-expanded="false" aria-controls="content-a-la-carta">
+          <span class="section-title-wrap"><h2>A La Carta</h2></span><span class="chevron">⌄</span>
+        </button>
+        <div class="section-content grid-two" id="content-a-la-carta">
+          <div>
+            <ul class="menu-items">
+              <li class="menu-item"><div class="item-row"><span>Two Shrimp Soft Tacos</span><span class="price">$10.75</span></div><p class="desc">Prawns, grilled with onion, and bell peppers, topped with lettuce and cheese</p></li>
+              <li class="menu-item"><div class="item-row"><span>Two Fish Soft Tacos</span><span class="price">$10.75</span></div><p class="desc">Grilled fish tacos, topped with lettuce and cheese</p></li>
+              <li class="menu-item"><div class="item-row"><span>Tacos De Alambre</span><span class="price">$10.75</span></div><p class="desc">Carne Asada and bacon, grilled with onion and bell peppers, topped with melted cheese</p></li>
+            </ul>
+          </div>
+          <div>
+            <ul class="menu-items">
+              <li class="menu-item"><div class="item-row"><span>Chile Relleno</span><span class="price">$5.00</span></div><p class="desc">Green pepper, stuffed with cheese, dipped in egg batter, fried, and topped with red enchilada salsa and cheese</p></li>
+              <li class="menu-item"><div class="item-row"><span>Enchilada (Cheese)</span><span class="price">$4.00</span></div></li>
+              <li class="menu-item"><div class="item-row"><span>Enchilada (Chicken or Beef)</span><span class="price">$4.75</span></div></li>
+              <li class="menu-item"><div class="item-row"><span>Tamal (Pork)</span><span class="price">$4.50</span></div><p class="desc">Marinated pork, wrapped in masa flour topped with red enchilada salsa and cheese</p></li>
+              <li class="menu-item"><div class="item-row"><span>Soft Taco</span><span class="price">$4.25</span></div><p class="desc">Carne asada, pollo asada, pastor, or carnitas, topped with onion, and cilantro</p></li>
+              <li class="menu-item"><div class="item-row"><span>Taco Duro (Hard Taco)</span><span class="price">$4.25</span></div><p class="desc">Chicken, or beef, corn tortilla stuffed with meat, deep fried, topped with lettuce and cheese</p></li>
+              <li class="menu-item"><div class="item-row"><span>Flauta (Chicken or Beef)</span><span class="price">$4.50</span></div><p class="desc">Corn tortilla, stuffed with meat, deep fried, and serves with a bed of lettuce, topped with guacamole and sour cream</p></li>
+              <li class="menu-item"><div class="item-row"><span>Chimichanga (Chicken or Beef)</span><span class="price">$7.00</span></div><p class="desc">Mini burrito with beans, choice of meat, deep fried, and served on a bed of lettuce, topped with sour cream, and guacamole</p></li>
+              <li class="menu-item"><div class="item-row"><span>Tostada</span><span class="price">$8.25</span></div><p class="desc">Beans, lettuce, cheese, sour cream, guacamole, and pico de gallo</p></li>
+              <li class="menu-item"><div class="item-row"><span>Quesabirria</span><span class="price">$4.75</span></div><p class="desc">Birria beef, folded in a corn tortilla, with melted cheese, served with consume</p></li>
+            </ul>
+          </div>
+          <div class="section-actions" style="grid-column: 1 / -1;"><a class="btn btn-primary" href="#order">Order A La Carta</a></div>
+        </div>
+      </article>
+
+      <article class="menu-section" id="plates" data-category="plates">
+        <button class="section-toggle" aria-expanded="false" aria-controls="content-plates">
+          <span class="section-title-wrap"><h2>Plates</h2></span><span class="chevron">⌄</span>
+        </button>
+        <div class="section-content" id="content-plates">
+          <ul class="menu-items">
+            <li class="menu-item"><div class="item-row"><span>14. Philly Cheese Steak</span><span class="price">$10.75</span></div><p class="desc">Steak, grilled bell peppers, and onions topped with swiss cheese</p></li>
+            <li class="menu-item"><div class="item-row"><span>15. Torta</span><span class="price">$10.75</span></div><p class="desc">Mexican roll with beans, cheese, tomato, onion, avocado, lettuce, and your choice of meat</p></li>
+            <li class="menu-item"><div class="item-row"><span>16. Quesadilla</span><span class="price">Cheese $8.75 / Meat $9.75</span></div><p class="desc">Topped with sour cream, and guacamole</p></li>
+            <li class="menu-item"><div class="item-row"><span>17. Taco Salad</span><span class="price">$13.75</span></div><p class="desc">Flour shell filled with your choice of meat, beans, cheese, sour cream, guacamole, and pico</p></li>
+            <li class="menu-item"><div class="item-row"><span>18. Nachos</span><span class="price">$13.75</span></div><p class="desc">Chips topped with choice of meat, beans, cheese, sour cream, guacamole, and pico</p></li>
+            <li class="menu-item"><div class="item-row"><span>Steak Fries</span><span class="price">$13.75</span></div></li>
+          </ul>
+
+          <h3>Plates Served With Rice And Beans</h3>
+          <ul class="menu-items">
+            <li class="menu-item"><div class="item-row"><span>19. Enchiladas (2)</span><span class="price">Cheese $13.00 / Chicken or Beef $14.00</span></div></li>
+            <li class="menu-item"><div class="item-row"><span>20. Carne Asada</span><span class="price">$17.25</span></div></li>
+            <li class="menu-item"><div class="item-row"><span>21. Pollo Asada</span><span class="price">$17.25</span></div></li>
+            <li class="menu-item"><div class="item-row"><span>22. Carnitas</span><span class="price">$17.25</span></div></li>
+            <li class="menu-item"><div class="item-row"><span>23. Tamales (2) (Pork Only)</span><span class="price">$14.00</span></div></li>
+            <li class="menu-item"><div class="item-row"><span>24. Tacos Duros (3)</span><span class="price">Chicken or Beef $15.25</span></div></li>
+            <li class="menu-item"><div class="item-row"><span>25. Fajitas (Chicken or Steak)</span><span class="price">$17.25</span></div></li>
+            <li class="menu-item"><div class="item-row"><span>26. Chile Rellenos (2)</span><span class="price">$14.50</span></div></li>
+            <li class="menu-item"><div class="item-row"><span>27. Flautas (3)</span><span class="price">$15.75</span></div></li>
+            <li class="menu-item"><div class="item-row"><span>28. Chimichanga</span><span class="price">$13.25</span></div></li>
+            <li class="menu-item"><div class="item-row"><span>29. Quesadilla</span><span class="price">Cheese $13.25 / With Meat $14.25</span></div></li>
+            <li class="menu-item"><div class="item-row"><span>30. Chile Verde (Pork Chile)</span><span class="price">$17.25</span></div></li>
+            <li class="menu-item"><div class="item-row"><span>31. Childs Plate</span><span class="price">Cheese $9.50 / Meat $10.50</span></div><p class="desc">Cheese Quesadilla, Cheese Enchilada, Bean and Cheese Soft Taco, Or Burrito With Meat</p></li>
+            <li class="menu-item"><div class="item-row"><span>32. Platillo De Combinacion (Combination Plate)</span><span class="price">One $12.75 / Two $14.75 / Three $16.75</span></div><p class="desc">Items: Tostada, Chile Relleno, Enchilada, Taco (Soft or Hard), Flauta (Chicken or Beef), Tamal (Pork Only)</p></li>
+            <li class="menu-item"><div class="item-row"><span>33. Huevos Rancheros</span><span class="price">$14.00</span></div><p class="desc">Two eggs over easy, topped with red enchilada salsa, and cheese</p></li>
+            <li class="menu-item"><div class="item-row"><span>34. Chilaquiles</span><span class="price">$14.00</span></div><p class="desc">Pieces of tortilla fried with eggs, house hot sauce, cheese and sour cream</p></li>
+          </ul>
+          <div class="section-actions"><a class="btn btn-primary" href="#order">Order Plates</a></div>
+        </div>
+      </article>
+
+      <article class="menu-section" id="seafood" data-category="seafood">
+        <button class="section-toggle" aria-expanded="false" aria-controls="content-seafood">
+          <span class="section-title-wrap"><h2>Seafood</h2></span><span class="chevron">⌄</span>
+        </button>
+        <div class="section-content" id="content-seafood">
+          <ul class="menu-items">
+            <li class="menu-item"><div class="item-row"><span>Huevos Con Chorizo</span><span class="price">$14.00</span></div><p class="desc">Eggs scrambled with Mexican sausage</p></li>
+            <li class="menu-item"><div class="item-row"><span>Mexican Omelet</span><span class="price">$14.00</span></div><p class="desc">Stuffed with cheese, and pico</p></li>
+            <li class="menu-item"><div class="item-row"><span>Fish Fillet</span><span class="price">$19.75</span></div><p class="desc">Grilled fish, topped with grilled onions, and tomato</p></li>
+            <li class="menu-item"><div class="item-row"><span>Camarones Al Mojo De Ajo</span><span class="price">$19.75</span></div><p class="desc">Sauteed prawn in butter, garlic, and cream sauce</p></li>
+            <li class="menu-item"><div class="item-row"><span>Camarones Rancheros</span><span class="price">$19.75</span></div><p class="desc">Sauteed prawn in ranch style red sauce</p></li>
+            <li class="menu-item"><div class="item-row"><span>Coctel De Camaron</span><span class="price">$19.75</span></div><p class="desc">Shrimp Cocktail</p></li>
+            <li class="menu-item"><div class="item-row"><span>Camarones A La Diabla</span><span class="price">$19.75</span></div><p class="desc">Sauteed prawn in house hot sauce</p></li>
+          </ul>
+          <div class="section-actions"><a class="btn btn-primary" href="#order">Order Seafood</a></div>
+        </div>
+      </article>
+
+      <article class="menu-section" id="soups" data-category="soups">
+        <button class="section-toggle" aria-expanded="false" aria-controls="content-soups">
+          <span class="section-title-wrap"><h2>Soups</h2></span><span class="chevron">⌄</span>
+        </button>
+        <div class="section-content" id="content-soups">
+          <ul class="menu-items">
+            <li class="menu-item"><div class="item-row"><span>Menudo (Tripe Soup)</span><span class="price">Small $15.50 / Large $17.50</span></div></li>
+            <li class="menu-item"><div class="item-row"><span>Pozole</span><span class="price">Small $13.75 / Large $15.75</span></div></li>
+          </ul>
+          <div class="section-actions"><a class="btn btn-primary" href="#order">Order Soups</a></div>
+        </div>
+      </article>
+
+      <article class="menu-section" id="sides" data-category="sides">
+        <button class="section-toggle" aria-expanded="false" aria-controls="content-sides">
+          <span class="section-title-wrap"><h2>Sides</h2></span><span class="chevron">⌄</span>
+        </button>
+        <div class="section-content" id="content-sides">
+          <ul class="menu-items">
+            <li class="menu-item"><div class="item-row"><span>Arroz O Frijoles Chico (Small Rice or Beans)</span><span class="price">$7.75</span></div></li>
+            <li class="menu-item"><div class="item-row"><span>Arroz O Frijoles Mediano (Medium Rice or Beans)</span><span class="price">$8.75</span></div></li>
+            <li class="menu-item"><div class="item-row"><span>Arroz O Frijoles Grande (Large Rice or Beans)</span><span class="price">$10.75</span></div></li>
+            <li class="menu-item"><div class="item-row"><span>Chips Only</span><span class="price">Half $3.50 / Full $4.50</span></div></li>
+            <li class="menu-item"><div class="item-row"><span>Chips And Salsa</span><span class="price">Half $5.00 / Full $6.75</span></div></li>
+            <li class="menu-item"><div class="item-row"><span>Chips And Guacamole</span><span class="price">Half $6.00 / Full $8.00</span></div></li>
+            <li class="menu-item"><div class="item-row"><span>Tortillas (5) (Flour or Corn)</span></div></li>
+          </ul>
+          <div class="section-actions"><a class="btn btn-primary" href="#order">Order Sides</a></div>
+        </div>
+      </article>
+
+      <article class="menu-section" id="drinks" data-category="drinks">
+        <button class="section-toggle" aria-expanded="false" aria-controls="content-drinks">
+          <span class="section-title-wrap"><h2>Drinks / Bebidas</h2></span><span class="chevron">⌄</span>
+        </button>
+        <div class="section-content" id="content-drinks">
+          <ul class="menu-items">
+            <li class="menu-item"><div class="item-row"><span>Can Soda (12oz)</span><span class="price">$1.90</span></div></li>
+            <li class="menu-item"><div class="item-row"><span>Arizona (Teas)</span><span class="price">$1.90</span></div></li>
+            <li class="menu-item"><div class="item-row"><span>Jarritos</span><span class="price">$2.50</span></div></li>
+            <li class="menu-item"><div class="item-row"><span>Glass Coke / Glass Fantas</span><span class="price">$3.00</span></div></li>
+            <li class="menu-item"><div class="item-row"><span>Energy Drinks</span><span class="price">$3.50</span></div></li>
+            <li class="menu-item"><div class="item-row"><span>Fountain Soda</span><span class="price">Small $2.55 / Medium $3.05 / Large $3.55</span></div></li>
+            <li class="menu-item"><div class="item-row"><span>Aguas Fresca</span><span class="price">Small $2.85 / Medium $3.40 / Large $4.00</span></div></li>
+            <li class="menu-item"><div class="item-row"><span>Beer</span><span class="price">Domestic $4.00 or 6 / $21.00 · Imported $5.00 or 6 / $25.00</span></div></li>
+            <li class="menu-item"><div class="item-row"><span>Michelada</span><span class="price">$8.75</span></div></li>
+          </ul>
+          <div class="section-actions"><a class="btn btn-primary" href="#order">Order Drinks</a></div>
+        </div>
+      </article>
+
+      <article class="menu-section" id="specials" data-category="specials">
+        <button class="section-toggle" aria-expanded="false" aria-controls="content-specials">
+          <span class="section-title-wrap"><h2>Specials</h2></span><span class="chevron">⌄</span>
+        </button>
+        <div class="section-content" id="content-specials">
+          <h3>Monday–Friday · 11AM–2PM</h3>
+          <ul class="menu-items">
+            <li class="menu-item"><div class="item-row"><span>Choice Of One Item, Served With Rice And Beans</span><span class="price">$10.25</span></div><p class="desc">Taco (Soft or Hard), Enchilada, Tamal, or Flauta</p></li>
+          </ul>
+
+          <h3>Monday &amp; Friday</h3>
+          <ul class="menu-items">
+            <li class="menu-item"><div class="item-row"><span>Soft Taco Special (4) Topped With Onions And Cilantro</span><span class="price">$9.25</span></div><p class="desc">Asada, Pollo, Pastor, Carnitas, Shredded Beef or Chicken</p></li>
+          </ul>
+
+          <h3>Tuesday &amp; Thursday</h3>
+          <ul class="menu-items">
+            <li class="menu-item"><div class="item-row"><span>Two Enchiladas A La Carta</span><span class="price">$8.75</span></div></li>
+          </ul>
+
+          <h3>Wednesday</h3>
+          <ul class="menu-items">
+            <li class="menu-item"><div class="item-row"><span>Burrito Special, Your choice of Meat Served With Rice And Beans</span><span class="price">$7.75</span></div></li>
+          </ul>
+
+          <div class="section-actions"><a class="btn btn-primary" href="#order">Order Specials</a></div>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <div class="mobile-order-bar" aria-label="Quick order actions">
+    <a class="btn btn-secondary" href="#burritos">Browse Menu</a>
+    <a class="btn btn-primary" href="#order">Order Online</a>
+  </div>
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Restaurant",
+      "name": "Burrito Palace",
+      "servesCuisine": ["Mexican"],
+      "hasMenu": {
+        "@type": "Menu",
+        "name": "Burrito Palace Menu",
+        "hasMenuSection": [
+          {"@type": "MenuSection", "name": "Burritos"},
+          {"@type": "MenuSection", "name": "Breakfast"},
+          {"@type": "MenuSection", "name": "A La Carta"},
+          {"@type": "MenuSection", "name": "Plates"},
+          {"@type": "MenuSection", "name": "Seafood"},
+          {"@type": "MenuSection", "name": "Soups"},
+          {"@type": "MenuSection", "name": "Sides"},
+          {"@type": "MenuSection", "name": "Drinks"},
+          {"@type": "MenuSection", "name": "Specials"}
+        ]
+      }
+    }
+  </script>
+
+  <script>
+    (function () {
+      const sections = Array.from(document.querySelectorAll('.menu-section'));
+      const chips = Array.from(document.querySelectorAll('.category-chip'));
+      const mobile = window.matchMedia('(max-width: 759px)');
+
+      function setChip(target) {
+        chips.forEach((chip) => chip.classList.toggle('active', chip.dataset.target === target || (target === 'all' && chip.dataset.target === 'all')));
+      }
+
+      function openSection(section) {
+        sections.forEach((item) => {
+          const expanded = item === section;
+          item.classList.toggle('open', expanded);
+          const button = item.querySelector('.section-toggle');
+          if (button) button.setAttribute('aria-expanded', String(expanded));
+        });
+      }
+
+      sections.forEach((section) => {
+        const button = section.querySelector('.section-toggle');
+        button.addEventListener('click', () => {
+          if (!mobile.matches) return;
+          const isOpen = section.classList.contains('open');
+          section.classList.toggle('open', !isOpen);
+          button.setAttribute('aria-expanded', String(!isOpen));
+        });
+      });
+
+      chips.forEach((chip) => {
+        chip.addEventListener('click', (event) => {
+          const targetId = chip.dataset.target;
+          if (targetId === 'all') {
+            setChip('all');
+            return;
+          }
+          const target = document.getElementById(targetId);
+          if (!target) return;
+          setChip(targetId);
+          if (mobile.matches) {
+            openSection(target);
+          }
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          event.preventDefault();
+        });
+      });
+
+      const observer = new IntersectionObserver((entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (visible) {
+          setChip(visible.target.id);
+        }
+      }, {
+        threshold: [0.35, 0.6],
+        rootMargin: '-35% 0px -45% 0px'
+      });
+
+      sections.forEach((section) => observer.observe(section));
+
+      function syncMode() {
+        if (!mobile.matches) {
+          sections.forEach((section) => {
+            section.classList.add('open');
+            const button = section.querySelector('.section-toggle');
+            button.setAttribute('aria-expanded', 'true');
+          });
+        } else {
+          sections.forEach((section, index) => {
+            const open = index === 0;
+            section.classList.toggle('open', open);
+            const button = section.querySelector('.section-toggle');
+            button.setAttribute('aria-expanded', String(open));
+          });
+        }
+      }
+
+      syncMode();
+      mobile.addEventListener('change', syncMode);
+    })();
+  </script>
+</body>
+</html>
