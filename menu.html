@@ -201,7 +201,7 @@
       display: none;
     }
 
-    .hero-brand-label {
+    .hero-brand {
       display: none;
       margin: 0;
       font-size: 0.84rem;
@@ -211,7 +211,8 @@
       color: var(--brown-soft);
     }
 
-    h1 {
+    h1,
+    .hero-title {
       margin: 0;
       font-size: clamp(1.6rem, 3.6vw, 2.2rem);
       line-height: 1.2;
@@ -448,13 +449,22 @@
         padding: 14px;
       }
 
-      .hero-brand-label {
+      .hero-brand {
         display: block;
+        font-size: 26px;
+        font-weight: 800;
+        letter-spacing: 1px;
+        margin-bottom: 6px;
+        text-transform: none;
+        color: var(--brown);
       }
 
-      h1 {
-        font-size: clamp(1.45rem, 6.4vw, 1.8rem);
+      h1,
+      .hero-title {
+        font-size: 20px;
+        font-weight: 600;
         line-height: 1.16;
+        margin-bottom: 8px;
       }
 
       .hero-secondary-nav {
@@ -522,6 +532,14 @@
     }
 
     @media (max-width: 640px) {
+      .logo {
+        height: 90px;
+      }
+
+      .hero {
+        padding-top: 10px;
+      }
+
       .brand-text {
         font-size: 17px;
       }
@@ -569,8 +587,8 @@
   <main class="container" id="all">
     <section class="hero">
       <div class="hero-card">
-        <p class="hero-brand-label">Burrito Palace</p>
-        <h1>Order Fast. Eat Fresh.</h1>
+        <p class="hero-brand">Burrito Palace</p>
+        <h1 class="hero-title">Order Fast. Eat Fresh.</h1>
         <p>Browse our full menu by category, open a section, and place your order online for pickup.</p>
         <nav class="hero-secondary-nav" aria-label="Secondary navigation">
           <a href="/menu.html" aria-current="page">Menu</a>
