@@ -3,11 +3,47 @@
 <head>
   <title>Burrito Palace</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root {
+      --warm-brown: #4b291a;
+    }
+
+    .logo {
+      height: 42px;
+      width: auto;
+      display: block;
+    }
+
+    .nav-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-text {
+      font-weight: 700;
+      font-size: 18px;
+      color: var(--warm-brown);
+    }
+
+    @media (max-width: 640px) {
+      .logo {
+        height: 34px;
+      }
+
+      .brand-text {
+        font-size: 16px;
+      }
+    }
+  </style>
 </head>
 
 <body style="font-family: Arial; text-align:center; padding:40px;">
 
-<h1>Burrito Palace</h1>
+<a href="/index.html" class="nav-brand">
+  <img src="/images/burrito-palace-logo.png" alt="Burrito Palace Logo" class="logo">
+  <span class="brand-text">Burrito Palace</span>
+</a>
 
 <p>Authentic Mexican Food Made Fresh Daily</p>
 
