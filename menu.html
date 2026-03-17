@@ -403,18 +403,14 @@
       }
 
       .top-header {
-        background: rgba(248, 240, 226, 0.86);
-        backdrop-filter: blur(3px);
+        background: rgba(255, 246, 232, 0.85);
+        backdrop-filter: none;
       }
 
       .nav-brand {
-        width: auto;
-        flex-direction: row;
+        width: 100%;
         justify-content: center;
-        gap: 8px;
       }
-
-      .logo { height: 70px; }
 
       .nav-links {
         display: none;
@@ -498,8 +494,21 @@
     }
 
     @media (max-width: 640px) {
-      .brand-text {
-        font-size: 17px;
+      .mobile-brand {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding-top: 8px;
+      }
+
+      .mobile-brand .logo {
+        height: 64px;
+      }
+
+      .mobile-brand .brand-text {
+        font-size: 22px;
+        font-weight: 700;
       }
     }
   </style>
@@ -507,7 +516,7 @@
 <body>
   <header class="top-header" aria-label="Primary navigation">
     <div class="container">
-      <a href="/index.html" class="nav-brand">
+      <a href="/index.html" class="nav-brand mobile-brand">
         <img src="/images/burrito-palace-logo.png" alt="Burrito Palace Logo" class="logo">
         <span class="brand-text">Burrito Palace</span>
       </a>
