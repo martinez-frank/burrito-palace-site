@@ -69,7 +69,7 @@
     }
 
     .logo {
-      height: 42px;
+      height: 84px;
       width: auto;
       display: block;
     }
@@ -345,7 +345,7 @@
 
     @media (min-width: 760px) {
       :root {
-        --header-height: 66px;
+        --header-height: 96px;
         --filter-height: 54px;
       }
 
@@ -375,21 +375,31 @@
 
     @media (max-width: 759px) {
       :root {
-        --header-height: 60px;
+        --header-height: 188px;
         --filter-height: 52px;
       }
 
       .container { width: min(1100px, 94vw); }
 
       .top-header .container {
-        gap: 8px;
-        padding: 6px 0 8px;
+        gap: 10px;
+        padding: 10px 0 10px;
       }
 
+      .nav-brand {
+        order: 1;
+        width: 100%;
+        flex-direction: column;
+        justify-content: center;
+        gap: 6px;
+      }
 
-      .nav-links { order: 3; width: 100%; }
+      .logo { height: 102px; }
+
+      .nav-links { order: 2; width: 100%; justify-content: center; }
 
       .header-actions {
+        order: 3;
         margin-left: 0;
         width: 100%;
         justify-content: stretch;
@@ -420,12 +430,8 @@
     }
 
     @media (max-width: 640px) {
-      .logo {
-        height: 34px;
-      }
-
       .brand-text {
-        font-size: 16px;
+        font-size: 17px;
       }
     }
   </style>
@@ -474,8 +480,8 @@
         <h1>Order Fast. Eat Fresh. Real Burrito Palace Favorites.</h1>
         <p>Browse our full menu by category, open a section, and place your order online for pickup.</p>
         <div class="section-actions">
-          <a class="btn btn-primary" id="order" href="https://www.doordash.com/" target="_blank" rel="noopener noreferrer">Order on DoorDash</a>
-          <a class="btn btn-grubhub" href="https://www.grubhub.com/" target="_blank" rel="noopener noreferrer">Order on Grubhub</a>
+          <a class="btn btn-primary" id="order" href="https://www.doordash.com/" target="_blank" rel="noopener noreferrer">DoorDash</a>
+          <a class="btn btn-grubhub" href="https://www.grubhub.com/" target="_blank" rel="noopener noreferrer">Grubhub</a>
         </div>
       </div>
     </section>
@@ -521,7 +527,7 @@
 
           <p class="note">Whole beans available upon request.</p>
           <p class="note">No substitutions, any additions will be extra. Thank you.</p>
-          <div class="section-actions"><a class="btn btn-primary" href="https://www.doordash.com/" target="_blank" rel="noopener noreferrer">Order Burritos · DoorDash</a><a class="btn btn-grubhub" href="https://www.grubhub.com/" target="_blank" rel="noopener noreferrer">Grubhub</a></div>
+          <div class="section-actions"><a class="btn btn-primary" href="https://www.doordash.com/" target="_blank" rel="noopener noreferrer">DoorDash</a><a class="btn btn-grubhub" href="https://www.grubhub.com/" target="_blank" rel="noopener noreferrer">Grubhub</a></div>
         </div>
       </article>
 
@@ -536,7 +542,7 @@
             <li class="menu-item"><div class="item-row"><span>Tocino (Bacon)</span><span class="price">$11.90</span></div></li>
             <li class="menu-item"><div class="item-row"><span>Jamon (Ham)</span><span class="price">$11.90</span></div></li>
           </ul>
-          <div class="section-actions"><a class="btn btn-primary" href="https://www.doordash.com/" target="_blank" rel="noopener noreferrer">Order Breakfast · DoorDash</a><a class="btn btn-grubhub" href="https://www.grubhub.com/" target="_blank" rel="noopener noreferrer">Grubhub</a></div>
+          <div class="section-actions"><a class="btn btn-primary" href="https://www.doordash.com/" target="_blank" rel="noopener noreferrer">DoorDash</a><a class="btn btn-grubhub" href="https://www.grubhub.com/" target="_blank" rel="noopener noreferrer">Grubhub</a></div>
         </div>
       </article>
 
@@ -566,7 +572,7 @@
               <li class="menu-item"><div class="item-row"><span>Quesabirria</span><span class="price">$4.75</span></div><p class="desc">Birria beef, folded in a corn tortilla, with melted cheese, served with consume</p></li>
             </ul>
           </div>
-          <div class="section-actions" style="grid-column: 1 / -1;"><a class="btn btn-primary" href="https://www.doordash.com/" target="_blank" rel="noopener noreferrer">Order A La Carta · DoorDash</a><a class="btn btn-grubhub" href="https://www.grubhub.com/" target="_blank" rel="noopener noreferrer">Grubhub</a></div>
+          <div class="section-actions" style="grid-column: 1 / -1;"><a class="btn btn-primary" href="https://www.doordash.com/" target="_blank" rel="noopener noreferrer">DoorDash</a><a class="btn btn-grubhub" href="https://www.grubhub.com/" target="_blank" rel="noopener noreferrer">Grubhub</a></div>
         </div>
       </article>
 
@@ -603,7 +609,7 @@
             <li class="menu-item"><div class="item-row"><span>33. Huevos Rancheros</span><span class="price">$14.00</span></div><p class="desc">Two eggs over easy, topped with red enchilada salsa, and cheese</p></li>
             <li class="menu-item"><div class="item-row"><span>34. Chilaquiles</span><span class="price">$14.00</span></div><p class="desc">Pieces of tortilla fried with eggs, house hot sauce, cheese and sour cream</p></li>
           </ul>
-          <div class="section-actions"><a class="btn btn-primary" href="https://www.doordash.com/" target="_blank" rel="noopener noreferrer">Order Plates · DoorDash</a><a class="btn btn-grubhub" href="https://www.grubhub.com/" target="_blank" rel="noopener noreferrer">Grubhub</a></div>
+          <div class="section-actions"><a class="btn btn-primary" href="https://www.doordash.com/" target="_blank" rel="noopener noreferrer">DoorDash</a><a class="btn btn-grubhub" href="https://www.grubhub.com/" target="_blank" rel="noopener noreferrer">Grubhub</a></div>
         </div>
       </article>
 
@@ -621,7 +627,7 @@
             <li class="menu-item"><div class="item-row"><span>Coctel De Camaron</span><span class="price">$19.75</span></div><p class="desc">Shrimp Cocktail</p></li>
             <li class="menu-item"><div class="item-row"><span>Camarones A La Diabla</span><span class="price">$19.75</span></div><p class="desc">Sauteed prawn in house hot sauce</p></li>
           </ul>
-          <div class="section-actions"><a class="btn btn-primary" href="https://www.doordash.com/" target="_blank" rel="noopener noreferrer">Order Seafood · DoorDash</a><a class="btn btn-grubhub" href="https://www.grubhub.com/" target="_blank" rel="noopener noreferrer">Grubhub</a></div>
+          <div class="section-actions"><a class="btn btn-primary" href="https://www.doordash.com/" target="_blank" rel="noopener noreferrer">DoorDash</a><a class="btn btn-grubhub" href="https://www.grubhub.com/" target="_blank" rel="noopener noreferrer">Grubhub</a></div>
         </div>
       </article>
 
@@ -634,7 +640,7 @@
             <li class="menu-item"><div class="item-row"><span>Menudo (Tripe Soup)</span><span class="price">Small $15.50 / Large $17.50</span></div></li>
             <li class="menu-item"><div class="item-row"><span>Pozole</span><span class="price">Small $13.75 / Large $15.75</span></div></li>
           </ul>
-          <div class="section-actions"><a class="btn btn-primary" href="https://www.doordash.com/" target="_blank" rel="noopener noreferrer">Order Soups · DoorDash</a><a class="btn btn-grubhub" href="https://www.grubhub.com/" target="_blank" rel="noopener noreferrer">Grubhub</a></div>
+          <div class="section-actions"><a class="btn btn-primary" href="https://www.doordash.com/" target="_blank" rel="noopener noreferrer">DoorDash</a><a class="btn btn-grubhub" href="https://www.grubhub.com/" target="_blank" rel="noopener noreferrer">Grubhub</a></div>
         </div>
       </article>
 
@@ -652,7 +658,7 @@
             <li class="menu-item"><div class="item-row"><span>Chips And Guacamole</span><span class="price">Half $6.00 / Full $8.00</span></div></li>
             <li class="menu-item"><div class="item-row"><span>Tortillas (5) (Flour or Corn)</span></div></li>
           </ul>
-          <div class="section-actions"><a class="btn btn-primary" href="https://www.doordash.com/" target="_blank" rel="noopener noreferrer">Order Sides · DoorDash</a><a class="btn btn-grubhub" href="https://www.grubhub.com/" target="_blank" rel="noopener noreferrer">Grubhub</a></div>
+          <div class="section-actions"><a class="btn btn-primary" href="https://www.doordash.com/" target="_blank" rel="noopener noreferrer">DoorDash</a><a class="btn btn-grubhub" href="https://www.grubhub.com/" target="_blank" rel="noopener noreferrer">Grubhub</a></div>
         </div>
       </article>
 
@@ -672,7 +678,7 @@
             <li class="menu-item"><div class="item-row"><span>Beer</span><span class="price">Domestic $4.00 or 6 / $21.00 · Imported $5.00 or 6 / $25.00</span></div></li>
             <li class="menu-item"><div class="item-row"><span>Michelada</span><span class="price">$8.75</span></div></li>
           </ul>
-          <div class="section-actions"><a class="btn btn-primary" href="https://www.doordash.com/" target="_blank" rel="noopener noreferrer">Order Drinks · DoorDash</a><a class="btn btn-grubhub" href="https://www.grubhub.com/" target="_blank" rel="noopener noreferrer">Grubhub</a></div>
+          <div class="section-actions"><a class="btn btn-primary" href="https://www.doordash.com/" target="_blank" rel="noopener noreferrer">DoorDash</a><a class="btn btn-grubhub" href="https://www.grubhub.com/" target="_blank" rel="noopener noreferrer">Grubhub</a></div>
         </div>
       </article>
 
@@ -701,7 +707,7 @@
             <li class="menu-item"><div class="item-row"><span>Burrito Special, Your choice of Meat Served With Rice And Beans</span><span class="price">$7.75</span></div></li>
           </ul>
 
-          <div class="section-actions"><a class="btn btn-primary" href="https://www.doordash.com/" target="_blank" rel="noopener noreferrer">Order Specials · DoorDash</a><a class="btn btn-grubhub" href="https://www.grubhub.com/" target="_blank" rel="noopener noreferrer">Grubhub</a></div>
+          <div class="section-actions"><a class="btn btn-primary" href="https://www.doordash.com/" target="_blank" rel="noopener noreferrer">DoorDash</a><a class="btn btn-grubhub" href="https://www.grubhub.com/" target="_blank" rel="noopener noreferrer">Grubhub</a></div>
         </div>
       </article>
     </section>
