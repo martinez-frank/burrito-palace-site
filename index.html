@@ -31,10 +31,6 @@
   <style>
     :root {
       --warm-cream: #f8efdc;
-      --warm-cream-deep: #f2e4c8;
-      --warm-brown: #4b291a;
-      --warm-brown-soft: #70422b;
-      --card-shadow: 0 14px 36px rgba(75, 41, 26, 0.15);
     }
 
     * {
@@ -45,9 +41,8 @@
     body {
       margin: 0;
       min-height: 100%;
-      font-family: 'Arial', sans-serif;
-      color: var(--warm-brown);
-      background: linear-gradient(180deg, var(--warm-cream) 0%, #fff8e9 100%);
+      font-family: Arial, sans-serif;
+      background: var(--warm-cream);
     }
 
     .bp-splash-pending body {
@@ -59,73 +54,13 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 28px;
+      padding: 24px;
     }
 
-    .app-card {
-      width: min(700px, 100%);
-      background: rgba(255, 255, 255, 0.85);
-      border: 1px solid rgba(112, 66, 43, 0.14);
-      border-radius: 28px;
-      box-shadow: var(--card-shadow);
-      padding: clamp(26px, 4vw, 40px);
-      text-align: center;
-      backdrop-filter: saturate(110%);
-    }
-
-    .brand-lockup {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none;
-      margin-bottom: 16px;
-    }
-
-    .logo {
-      width: auto;
-      height: clamp(40px, 6vw, 56px);
+    .site-logo {
+      width: min(320px, 74vw);
+      height: auto;
       display: block;
-    }
-
-    .brand-text {
-      font-weight: 700;
-      font-size: clamp(20px, 3vw, 32px);
-      letter-spacing: 0.01em;
-      color: var(--warm-brown);
-    }
-
-    h1 {
-      margin: 10px 0 14px;
-      font-size: clamp(28px, 4vw, 42px);
-      line-height: 1.15;
-    }
-
-    p {
-      margin: 0 auto;
-      max-width: 34ch;
-      color: var(--warm-brown-soft);
-      font-size: clamp(16px, 2.2vw, 20px);
-      line-height: 1.5;
-    }
-
-    .menu-link {
-      display: inline-block;
-      margin-top: 24px;
-      padding: 12px 22px;
-      border-radius: 999px;
-      background: var(--warm-brown);
-      color: #fff;
-      text-decoration: none;
-      font-weight: 700;
-      letter-spacing: 0.01em;
-      transition: transform 160ms ease, box-shadow 160ms ease;
-      box-shadow: 0 8px 18px rgba(75, 41, 26, 0.24);
-    }
-
-    .menu-link:hover,
-    .menu-link:focus-visible {
-      transform: translateY(-1px);
-      box-shadow: 0 10px 20px rgba(75, 41, 26, 0.27);
     }
 
     .mobile-splash {
@@ -141,8 +76,8 @@
     }
 
     .mobile-splash__logo {
-      height: min(118px, 22vw);
-      width: auto;
+      width: min(300px, 68vw);
+      height: auto;
       opacity: 0;
       transform: scale(0.95);
     }
@@ -150,11 +85,11 @@
     .bp-splash-pending .mobile-splash {
       display: flex;
       opacity: 1;
-      animation: bpOverlayOut 1160ms cubic-bezier(0.23, 1, 0.32, 1) forwards;
+      animation: bpOverlayOut 1100ms ease forwards;
     }
 
     .bp-splash-pending .mobile-splash__logo {
-      animation: bpLogoIntro 1160ms cubic-bezier(0.23, 1, 0.32, 1) forwards;
+      animation: bpLogoIntro 1100ms ease forwards;
     }
 
     @keyframes bpLogoIntro {
@@ -162,7 +97,7 @@
         opacity: 0;
         transform: scale(0.94);
       }
-      28% {
+      32% {
         opacity: 1;
         transform: scale(1);
       }
@@ -172,7 +107,7 @@
       }
       100% {
         opacity: 0;
-        transform: scale(1.02);
+        transform: scale(1.01);
       }
     }
 
@@ -188,10 +123,10 @@
 
     @media (prefers-reduced-motion: reduce) {
       .bp-splash-pending .mobile-splash,
-      .bp-splash-pending .mobile-splash__logo,
-      .menu-link {
-        animation-duration: 240ms !important;
-        transition: none;
+      .bp-splash-pending .mobile-splash__logo {
+        animation: none !important;
+        opacity: 1;
+        transform: none;
       }
     }
 
@@ -207,17 +142,8 @@
     <img src="/images/burrito-palace-logo.png" alt="" class="mobile-splash__logo">
   </div>
 
-  <main class="app-shell">
-    <section class="app-card" aria-label="Burrito Palace home">
-      <a href="/index.html" class="brand-lockup">
-        <img src="/images/burrito-palace-logo.png" alt="Burrito Palace Logo" class="logo">
-        <span class="brand-text">Burrito Palace</span>
-      </a>
-
-      <h1>Authentic Mexican Food, Fresh Every Day</h1>
-      <p>Crafted burritos, sizzling proteins, and house-made flavors prepared to order with premium ingredients.</p>
-      <a href="/menu.html" class="menu-link">View Menu</a>
-    </section>
+  <main class="app-shell" aria-label="Burrito Palace home">
+    <img src="/images/burrito-palace-logo.png" alt="Burrito Palace Logo" class="site-logo">
   </main>
 
   <script>
@@ -257,7 +183,7 @@
       }
 
       if (reduceMotion) {
-        window.setTimeout(completeSplash, 240);
+        window.setTimeout(completeSplash, 80);
         return;
       }
 
@@ -267,7 +193,7 @@
         }
       }, { once: true });
 
-      window.setTimeout(completeSplash, 1350);
+      window.setTimeout(completeSplash, 1300);
     })();
   </script>
 </body>
