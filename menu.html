@@ -292,13 +292,23 @@
     }
 
     .item-row {
-      display: flex;
-      justify-content: space-between;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: start;
       gap: 12px;
       font-weight: 700;
     }
 
-    .price { color: var(--accent); white-space: nowrap; }
+    .item-row > :first-child {
+      min-width: 0;
+      overflow-wrap: anywhere;
+    }
+
+    .price {
+      color: var(--accent);
+      white-space: nowrap;
+      text-align: right;
+    }
 
     .desc {
       font-size: 0.88rem;
@@ -375,15 +385,15 @@
 
     @media (max-width: 759px) {
       :root {
-        --header-height: 188px;
+        --header-height: 156px;
         --filter-height: 52px;
       }
 
       .container { width: min(1100px, 94vw); }
 
       .top-header .container {
-        gap: 10px;
-        padding: 10px 0 10px;
+        gap: 8px;
+        padding: 8px 0 10px;
       }
 
       .nav-brand {
@@ -396,18 +406,15 @@
 
       .logo { height: 102px; }
 
-      .nav-links { order: 2; width: 100%; justify-content: center; }
-
-      .header-actions {
-        order: 3;
-        margin-left: 0;
+      .nav-links {
+        order: 2;
         width: 100%;
-        justify-content: stretch;
+        justify-content: center;
+        font-size: 0.88rem;
       }
 
-      .header-actions .btn {
-        flex: 1 1 calc(33.33% - 6px);
-        min-width: 92px;
+      .header-actions {
+        display: none;
       }
 
       .hero {
@@ -417,6 +424,40 @@
       .hero-card {
         gap: 10px;
         padding: 16px;
+      }
+
+      .menu-layout {
+        gap: 10px;
+      }
+
+      .section-toggle {
+        padding: 14px 14px 10px;
+      }
+
+      .section-title-wrap h2 {
+        font-size: 1.06rem;
+      }
+
+      .section-subtitle {
+        font-size: 0.84rem;
+      }
+
+      .menu-item {
+        padding: 11px 11px;
+      }
+
+      .item-row {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 4px;
+      }
+
+      .price {
+        white-space: normal;
+        text-align: left;
+      }
+
+      .desc {
+        font-size: 0.85rem;
       }
 
       .section-actions .btn {
