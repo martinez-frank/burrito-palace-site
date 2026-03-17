@@ -20,6 +20,7 @@
       --radius-pill: 999px;
       --header-height: 64px;
       --filter-height: 54px;
+      --warm-brown: #4b291a;
     }
 
     * { box-sizing: border-box; }
@@ -67,11 +68,22 @@
       flex-wrap: wrap;
     }
 
-    .brand {
-      font-weight: 800;
-      letter-spacing: 0.02em;
-      font-size: 1.15rem;
-      color: var(--brown);
+    .logo {
+      height: 42px;
+      width: auto;
+      display: block;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-text {
+      font-weight: 700;
+      font-size: 18px;
+      color: var(--warm-brown);
     }
 
     .nav-links {
@@ -374,9 +386,6 @@
         padding: 6px 0 8px;
       }
 
-      .brand {
-        font-size: 1rem;
-      }
 
       .nav-links { order: 3; width: 100%; }
 
@@ -409,12 +418,25 @@
         min-height: 46px;
       }
     }
+
+    @media (max-width: 640px) {
+      .logo {
+        height: 34px;
+      }
+
+      .brand-text {
+        font-size: 16px;
+      }
+    }
   </style>
 </head>
 <body>
   <header class="top-header" aria-label="Primary navigation">
     <div class="container">
-      <a class="brand" href="/">Burrito Palace</a>
+      <a href="/index.html" class="nav-brand">
+        <img src="/images/burrito-palace-logo.png" alt="Burrito Palace Logo" class="logo">
+        <span class="brand-text">Burrito Palace</span>
+      </a>
       <nav class="nav-links">
         <a href="/menu.html" aria-current="page">Menu</a>
         <a href="#" aria-label="About section link placeholder">About</a>
