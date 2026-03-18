@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Burrito Palace</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
   <script>
     (function () {
       var isMobile = false;
@@ -38,7 +39,23 @@
   </script>
   <style>
     :root {
-      --warm-cream: #f8efdc;
+      /* Base Colors */
+      --cream: #FFF6E8;
+      --warm-brown: #4A2E22;
+      --text-primary: #3B241A;
+      --text-secondary: #6B4A3A;
+
+      /* Brand Red (UPDATED) */
+      --brand-red: #A61E2A;
+      --brand-red-dark: #7F1820;
+
+      /* Surface */
+      --surface: #FFFDF8;
+
+      /* Depth */
+      --shadow-soft: 0 6px 18px rgba(74, 46, 34, 0.10);
+
+      --warm-cream: var(--cream);
     }
 
     * {
@@ -50,6 +67,7 @@
       margin: 0;
       min-height: 100%;
       font-family: Arial, sans-serif;
+      color: var(--text-secondary);
       background: var(--warm-cream);
     }
 
