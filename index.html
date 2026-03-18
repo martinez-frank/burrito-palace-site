@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Burrito Palace</title>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <script>
     (function () {
       var isMobile = false;
@@ -56,6 +56,8 @@
       --shadow-soft: 0 6px 18px rgba(74, 46, 34, 0.10);
 
       --warm-cream: var(--cream);
+      --grubhub: #F63440;
+      --grubhub-dark: #D12B36;
     }
 
     * {
@@ -66,7 +68,8 @@
     body {
       margin: 0;
       min-height: 100%;
-      font-family: Arial, sans-serif;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-weight: 400;
       color: var(--text-secondary);
       background: var(--warm-cream);
     }
@@ -87,6 +90,16 @@
       width: min(320px, 74vw);
       height: auto;
       display: block;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-weight: 600;
+    }
+
+    button {
+      font-weight: 500;
     }
 
     .mobile-splash {

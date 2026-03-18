@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Burrito Palace Menu | Burritos, Plates, Seafood & Specials</title>
   <meta name="description" content="Browse the Burrito Palace menu with burritos, breakfast, a la carta, plates, seafood, soups, sides, drinks, and specials.">
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
       /* Base Colors */
@@ -36,6 +36,8 @@
       --radius-pill: 999px;
       --header-height: 64px;
       --filter-height: 54px;
+      --grubhub: #F63440;
+      --grubhub-dark: #D12B36;
     }
 
     * { box-sizing: border-box; }
@@ -47,7 +49,7 @@
 
     body {
       margin: 0;
-      font-family: "Inter", "Segoe UI", Arial, sans-serif;
+      font-family: "Plus Jakarta Sans", "Segoe UI", Arial, sans-serif;
       font-weight: 400;
       background: var(--cream);
       color: var(--text-secondary);
@@ -61,6 +63,41 @@
     .container {
       width: min(1100px, 92vw);
       margin: 0 auto;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-weight: 600;
+    }
+
+    button,
+    .btn {
+      font-weight: 500;
+    }
+
+    @media (min-width: 768px) {
+      .top-header .nav-container {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        align-items: center;
+      }
+
+      .top-header .nav-menu {
+        justify-self: center;
+        display: flex;
+        gap: 24px;
+      }
+
+      .top-header .nav-actions {
+        justify-self: end;
+        margin-left: 0;
+      }
+
+      .logo {
+        transform: scale(1.1);
+        transform-origin: left center;
+      }
     }
 
     .top-header {
@@ -99,7 +136,7 @@
     }
 
     .brand-text {
-      font-weight: 700;
+      font-weight: 600;
       font-size: 18px;
       color: var(--text-primary);
     }
@@ -125,7 +162,7 @@
       border: 0;
       border-radius: var(--radius-pill);
       padding: 10px 14px;
-      font-weight: 700;
+      font-weight: 500;
       font-size: 0.88rem;
       cursor: pointer;
       display: inline-flex;
@@ -145,10 +182,18 @@
       border: 1px solid #ebd5b6;
     }
 
-    .btn-grubhub {
-      color: var(--brand-red);
-      background: #f7e8ea;
-      border: 1px solid #e5bcc1;
+    .btn-grubhub,
+    .button-grubhub {
+      background-color: var(--grubhub);
+      color: #fff;
+      border: none;
+    }
+
+    .btn-grubhub:hover,
+    .btn-grubhub:focus-visible,
+    .btn-grubhub:active,
+    .button-grubhub:hover {
+      background-color: var(--grubhub-dark);
     }
 
     .btn-primary {
@@ -193,7 +238,7 @@
       border-radius: var(--radius-pill);
       background: #fff;
       color: var(--text-secondary);
-      font-weight: 700;
+      font-weight: 500;
       font-size: 0.84rem;
       padding: 10px 14px;
       transition: all 0.2s ease;
@@ -256,7 +301,7 @@
       display: none;
       margin: 0;
       font-size: 0.84rem;
-      font-weight: 700;
+      font-weight: 600;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--text-secondary);
@@ -267,7 +312,7 @@
     h2,
     h3,
     .title {
-      font-family: 'DM Serif Display', serif;
+      font-family: 'Plus Jakarta Sans', sans-serif;
       font-weight: 600;
       letter-spacing: -0.3px;
       color: var(--text-primary);
@@ -330,7 +375,7 @@
     }
 
     .section-toggle .chevron {
-      font-weight: 800;
+      font-weight: 600;
       color: var(--text-secondary);
       transition: transform 0.2s ease;
     }
@@ -354,6 +399,7 @@
       font-size: 0.95rem;
       text-transform: uppercase;
       color: var(--text-primary);
+      font-weight: 600;
     }
 
     ul.menu-items {
@@ -525,7 +571,7 @@
       .hero-brand {
         display: block;
         font-size: 26px;
-        font-weight: 800;
+        font-weight: 600;
         letter-spacing: 1px;
         margin-bottom: 6px;
         text-transform: none;
@@ -550,7 +596,7 @@
         border: 1px solid #e4cda8;
         border-radius: var(--radius-pill);
         padding: 8px 12px;
-        font-weight: 700;
+        font-weight: 500;
         font-size: 0.82rem;
         color: var(--text-secondary);
         background: rgba(255, 250, 241, 0.9);
@@ -626,18 +672,18 @@
 </head>
 <body>
   <header class="top-header" aria-label="Primary navigation">
-    <div class="container">
+    <div class="container nav-container">
       <a href="/index.html" class="nav-brand" id="homeLogoLink">
         <img src="/images/burrito-palace-logo.png" alt="Burrito Palace Logo" class="logo">
         <span class="brand-text">Burrito Palace</span>
       </a>
-      <nav class="nav-links">
+      <nav class="nav-links nav-menu">
         <a href="/menu.html" aria-current="page">Menu</a>
         <a href="#" aria-label="About section link placeholder">About</a>
         <a href="#" aria-label="Catering section link placeholder">Catering</a>
         <a href="#" aria-label="Contact section link placeholder">Contact</a>
       </nav>
-      <div class="header-actions">
+      <div class="header-actions nav-actions">
         <a class="btn btn-tertiary" href="tel:+15555550123" aria-label="Call Burrito Palace">Call</a>
         <a class="btn btn-primary" href="https://www.doordash.com/" target="_blank" rel="noopener noreferrer">DoorDash</a>
         <a class="btn btn-grubhub" href="https://www.grubhub.com/" target="_blank" rel="noopener noreferrer">Grubhub</a>
