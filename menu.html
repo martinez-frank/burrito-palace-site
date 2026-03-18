@@ -81,16 +81,30 @@
         display: grid;
         grid-template-columns: auto 1fr auto;
         align-items: center;
+        position: relative;
+      }
+
+      .top-header .nav-brand {
+        grid-column: 1;
+      }
+
+      .top-header .nav-wordmark {
+        grid-column: 2;
       }
 
       .top-header .nav-menu {
-        justify-self: center;
+        grid-column: 3;
+        justify-self: end;
         display: flex;
         gap: 24px;
+        padding-right: 240px;
       }
 
       .top-header .nav-actions {
-        justify-self: end;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
         margin-left: 0;
       }
 
@@ -135,10 +149,10 @@
       gap: 10px;
     }
 
-    .brand-text {
-      font-weight: 600;
-      font-size: 18px;
-      color: var(--text-primary);
+    .nav-wordmark {
+      justify-self: center;
+      height: 32px;
+      width: auto;
     }
 
     .nav-links {
@@ -297,14 +311,11 @@
       display: none;
     }
 
-    .hero-brand {
-      display: none;
-      margin: 0;
-      font-size: 0.84rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--text-secondary);
+    .hero-wordmark {
+      display: block;
+      width: auto;
+      height: 30px;
+      margin-bottom: 6px;
     }
 
     h1,
@@ -519,6 +530,24 @@
       .mobile-order-bar { display: none; }
     }
 
+    @media (min-width: 769px) {
+      .hero-wordmark {
+        display: none;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .top-header .nav-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .nav-wordmark {
+        display: none;
+      }
+    }
+
     @media (max-width: 759px) {
       :root {
         --header-height: 88px;
@@ -547,9 +576,6 @@
 
       .logo { height: 62px; }
 
-      .brand-text {
-        display: none;
-      }
 
       .nav-links {
         display: none;
@@ -566,16 +592,6 @@
       .hero-card {
         gap: 8px;
         padding: 14px;
-      }
-
-      .hero-brand {
-        display: block;
-        font-size: 26px;
-        font-weight: 600;
-        letter-spacing: 1px;
-        margin-bottom: 6px;
-        text-transform: none;
-        color: var(--text-primary);
       }
 
       h1,
@@ -664,9 +680,6 @@
         padding: 18px;
       }
 
-      .brand-text {
-        font-size: 17px;
-      }
     }
   </style>
 </head>
@@ -675,8 +688,12 @@
     <div class="container nav-container">
       <a href="/index.html" class="nav-brand" id="homeLogoLink">
         <img src="/images/burrito-palace-logo.png" alt="Burrito Palace Logo" class="logo">
-        <span class="brand-text">Burrito Palace</span>
-      </a>
+        </a>
+      <img 
+        src="/images/burrito-palace.png" 
+        alt="Burrito Palace"
+        class="nav-wordmark"
+      />
       <nav class="nav-links nav-menu">
         <a href="/menu.html" aria-current="page">Menu</a>
         <a href="#" aria-label="About section link placeholder">About</a>
@@ -711,7 +728,11 @@
   <main class="container" id="all">
     <section class="hero">
       <div class="hero-card">
-        <p class="hero-brand">Burrito Palace</p>
+        <img 
+          src="/images/burrito-palace.png" 
+          alt="Burrito Palace"
+          class="hero-wordmark"
+        />
         <h1 class="hero-title">Order Fast. Eat Fresh.</h1>
         <p>Browse our full menu by category, open a section, and place your order online for pickup.</p>
         <nav class="hero-secondary-nav" aria-label="Secondary navigation">
