@@ -396,11 +396,14 @@
     .menu-section.open .section-toggle .chevron { transform: rotate(180deg); }
 
     .section-content {
-      display: none;
       padding: 0 14px 16px;
     }
 
-    .menu-section.open .section-content { display: block; }
+    .panel {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.25s ease;
+    }
 
     .grid-two {
       display: grid;
@@ -756,10 +759,10 @@
 
     <section class="menu-layout" id="menuSections">
       <article class="menu-section open" id="burritos" data-category="burritos">
-        <button class="section-toggle" aria-expanded="true" aria-controls="content-burritos">
+        <button class="section-toggle accordion" aria-expanded="true" aria-controls="content-burritos">
           <span class="section-title-wrap"><h2>Burritos</h2></span><span class="chevron">⌄</span>
         </button>
-        <div class="section-content" id="content-burritos">
+        <div class="section-content panel" id="content-burritos">
           <ul class="menu-items">
             <li class="menu-item"><div class="item-row"><span>1. Carne Asada (Steak)</span></div></li>
             <li class="menu-item"><div class="item-row"><span>2. Pollo Asada (Grilled Chicken)</span></div></li>
@@ -800,10 +803,10 @@
       </article>
 
       <article class="menu-section" id="breakfast" data-category="breakfast">
-        <button class="section-toggle" aria-expanded="false" aria-controls="content-breakfast">
+        <button class="section-toggle accordion" aria-expanded="false" aria-controls="content-breakfast">
           <span class="section-title-wrap"><h2>Breakfast</h2><span class="section-subtitle">Choice of meat, with scrambled eggs, potatoes, and cheese</span></span><span class="chevron">⌄</span>
         </button>
-        <div class="section-content" id="content-breakfast">
+        <div class="section-content panel" id="content-breakfast">
           <ul class="menu-items">
             <li class="menu-item"><div class="item-row"><span>Carne Asada (Steak)</span><span class="price">$11.90</span></div></li>
             <li class="menu-item"><div class="item-row"><span>Chorizo (Mexican Sausage)</span><span class="price">$11.90</span></div></li>
@@ -815,10 +818,10 @@
       </article>
 
       <article class="menu-section" id="a-la-carta" data-category="a-la-carta">
-        <button class="section-toggle" aria-expanded="false" aria-controls="content-a-la-carta">
+        <button class="section-toggle accordion" aria-expanded="false" aria-controls="content-a-la-carta">
           <span class="section-title-wrap"><h2>A La Carta</h2></span><span class="chevron">⌄</span>
         </button>
-        <div class="section-content grid-two" id="content-a-la-carta">
+        <div class="section-content panel grid-two" id="content-a-la-carta">
           <div>
             <ul class="menu-items">
               <li class="menu-item"><div class="item-row"><span>Two Shrimp Soft Tacos</span><span class="price">$10.75</span></div><p class="desc">Prawns, grilled with onion, and bell peppers, topped with lettuce and cheese</p></li>
@@ -845,10 +848,10 @@
       </article>
 
       <article class="menu-section" id="plates" data-category="plates">
-        <button class="section-toggle" aria-expanded="false" aria-controls="content-plates">
+        <button class="section-toggle accordion" aria-expanded="false" aria-controls="content-plates">
           <span class="section-title-wrap"><h2>Plates</h2></span><span class="chevron">⌄</span>
         </button>
-        <div class="section-content" id="content-plates">
+        <div class="section-content panel" id="content-plates">
           <ul class="menu-items">
             <li class="menu-item"><div class="item-row"><span>14. Philly Cheese Steak</span><span class="price">$10.75</span></div><p class="desc">Steak, grilled bell peppers, and onions topped with swiss cheese</p></li>
             <li class="menu-item"><div class="item-row"><span>15. Torta</span><span class="price">$10.75</span></div><p class="desc">Mexican roll with beans, cheese, tomato, onion, avocado, lettuce, and your choice of meat</p></li>
@@ -882,10 +885,10 @@
       </article>
 
       <article class="menu-section" id="seafood" data-category="seafood">
-        <button class="section-toggle" aria-expanded="false" aria-controls="content-seafood">
+        <button class="section-toggle accordion" aria-expanded="false" aria-controls="content-seafood">
           <span class="section-title-wrap"><h2>Seafood</h2></span><span class="chevron">⌄</span>
         </button>
-        <div class="section-content" id="content-seafood">
+        <div class="section-content panel" id="content-seafood">
           <ul class="menu-items">
             <li class="menu-item"><div class="item-row"><span>Huevos Con Chorizo</span><span class="price">$14.00</span></div><p class="desc">Eggs scrambled with Mexican sausage</p></li>
             <li class="menu-item"><div class="item-row"><span>Mexican Omelet</span><span class="price">$14.00</span></div><p class="desc">Stuffed with cheese, and pico</p></li>
@@ -900,10 +903,10 @@
       </article>
 
       <article class="menu-section" id="soups" data-category="soups">
-        <button class="section-toggle" aria-expanded="false" aria-controls="content-soups">
+        <button class="section-toggle accordion" aria-expanded="false" aria-controls="content-soups">
           <span class="section-title-wrap"><h2>Soups</h2></span><span class="chevron">⌄</span>
         </button>
-        <div class="section-content" id="content-soups">
+        <div class="section-content panel" id="content-soups">
           <ul class="menu-items">
             <li class="menu-item"><div class="item-row"><span>Menudo (Tripe Soup)</span><span class="price">Small $15.50 / Large $17.50</span></div></li>
             <li class="menu-item"><div class="item-row"><span>Pozole</span><span class="price">Small $13.75 / Large $15.75</span></div></li>
@@ -913,10 +916,10 @@
       </article>
 
       <article class="menu-section" id="sides" data-category="sides">
-        <button class="section-toggle" aria-expanded="false" aria-controls="content-sides">
+        <button class="section-toggle accordion" aria-expanded="false" aria-controls="content-sides">
           <span class="section-title-wrap"><h2>Sides</h2></span><span class="chevron">⌄</span>
         </button>
-        <div class="section-content" id="content-sides">
+        <div class="section-content panel" id="content-sides">
           <ul class="menu-items">
             <li class="menu-item"><div class="item-row"><span>Arroz O Frijoles Chico (Small Rice or Beans)</span><span class="price">$7.75</span></div></li>
             <li class="menu-item"><div class="item-row"><span>Arroz O Frijoles Mediano (Medium Rice or Beans)</span><span class="price">$8.75</span></div></li>
@@ -931,10 +934,10 @@
       </article>
 
       <article class="menu-section" id="drinks" data-category="drinks">
-        <button class="section-toggle" aria-expanded="false" aria-controls="content-drinks">
+        <button class="section-toggle accordion" aria-expanded="false" aria-controls="content-drinks">
           <span class="section-title-wrap"><h2>Drinks / Bebidas</h2></span><span class="chevron">⌄</span>
         </button>
-        <div class="section-content" id="content-drinks">
+        <div class="section-content panel" id="content-drinks">
           <ul class="menu-items">
             <li class="menu-item"><div class="item-row"><span>Can Soda (12oz)</span><span class="price">$1.90</span></div></li>
             <li class="menu-item"><div class="item-row"><span>Arizona (Teas)</span><span class="price">$1.90</span></div></li>
@@ -951,10 +954,10 @@
       </article>
 
       <article class="menu-section" id="specials" data-category="specials">
-        <button class="section-toggle" aria-expanded="false" aria-controls="content-specials">
+        <button class="section-toggle accordion" aria-expanded="false" aria-controls="content-specials">
           <span class="section-title-wrap"><h2>Specials</h2></span><span class="chevron">⌄</span>
         </button>
-        <div class="section-content" id="content-specials">
+        <div class="section-content panel" id="content-specials">
           <h3>Monday–Friday · 11AM–2PM</h3>
           <ul class="menu-items">
             <li class="menu-item"><div class="item-row"><span>Choice Of One Item, Served With Rice And Beans</span><span class="price">$10.25</span></div><p class="desc">Taco (Soft or Hard), Enchilada, Tamal, or Flauta</p></li>
@@ -1014,6 +1017,7 @@
   <script>
     (function () {
       const sections = Array.from(document.querySelectorAll('.menu-section'));
+      const accordions = document.querySelectorAll('.accordion');
       const homeLogoLink = document.getElementById('homeLogoLink');
 
       if (homeLogoLink) {
@@ -1024,28 +1028,52 @@
       }
 
       const chips = Array.from(document.querySelectorAll('.category-chip'));
-      const mobile = window.matchMedia('(max-width: 759px)');
 
       function setChip(target) {
         chips.forEach((chip) => chip.classList.toggle('active', chip.dataset.target === target || (target === 'all' && chip.dataset.target === 'all')));
       }
 
-      function openSection(section) {
-        sections.forEach((item) => {
-          const expanded = item === section;
-          item.classList.toggle('open', expanded);
-          const button = item.querySelector('.section-toggle');
-          if (button) button.setAttribute('aria-expanded', String(expanded));
+      function closeAllSections() {
+        accordions.forEach((item) => {
+          item.classList.remove('active');
+          item.setAttribute('aria-expanded', 'false');
+          const section = item.closest('.menu-section');
+          if (section) section.classList.remove('open');
+          const panel = item.nextElementSibling;
+          if (panel) panel.style.maxHeight = null;
         });
       }
 
-      sections.forEach((section) => {
-        const button = section.querySelector('.section-toggle');
-        button.addEventListener('click', () => {
-          if (!mobile.matches) return;
-          const isOpen = section.classList.contains('open');
-          section.classList.toggle('open', !isOpen);
-          button.setAttribute('aria-expanded', String(!isOpen));
+      function openSection(section) {
+        const button = section.querySelector('.accordion');
+        const panel = button && button.nextElementSibling;
+
+        closeAllSections();
+
+        if (!button || !panel) return;
+
+        button.classList.add('active');
+        button.setAttribute('aria-expanded', 'true');
+        section.classList.add('open');
+        panel.style.maxHeight = panel.scrollHeight + 'px';
+      }
+
+      accordions.forEach((acc) => {
+        acc.addEventListener('click', function () {
+          const panel = this.nextElementSibling;
+          if (!panel) return;
+
+          const isOpen = panel.style.maxHeight;
+
+          closeAllSections();
+
+          if (!isOpen) {
+            this.classList.add('active');
+            this.setAttribute('aria-expanded', 'true');
+            const section = this.closest('.menu-section');
+            if (section) section.classList.add('open');
+            panel.style.maxHeight = panel.scrollHeight + 'px';
+          }
         });
       });
 
@@ -1054,14 +1082,14 @@
           const targetId = chip.dataset.target;
           if (targetId === 'all') {
             setChip('all');
+            closeAllSections();
+            event.preventDefault();
             return;
           }
           const target = document.getElementById(targetId);
           if (!target) return;
           setChip(targetId);
-          if (mobile.matches) {
-            openSection(target);
-          }
+          openSection(target);
           target.scrollIntoView({ behavior: 'smooth', block: 'start' });
           event.preventDefault();
         });
@@ -1081,25 +1109,7 @@
 
       sections.forEach((section) => observer.observe(section));
 
-      function syncMode() {
-        if (!mobile.matches) {
-          sections.forEach((section) => {
-            section.classList.add('open');
-            const button = section.querySelector('.section-toggle');
-            button.setAttribute('aria-expanded', 'true');
-          });
-        } else {
-          sections.forEach((section, index) => {
-            const open = index === 0;
-            section.classList.toggle('open', open);
-            const button = section.querySelector('.section-toggle');
-            button.setAttribute('aria-expanded', String(open));
-          });
-        }
-      }
-
-      syncMode();
-      mobile.addEventListener('change', syncMode);
+      openSection(sections[0]);
     })();
   </script>
 </body>
