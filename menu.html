@@ -402,7 +402,7 @@
     .panel {
       max-height: 0;
       overflow: hidden;
-      transition: max-height 0.25s ease;
+      transition: max-height 0.3s ease;
     }
 
     .grid-two {
@@ -1056,6 +1056,9 @@
         button.setAttribute('aria-expanded', 'true');
         section.classList.add('open');
         panel.style.maxHeight = panel.scrollHeight + 'px';
+        window.setTimeout(() => {
+          panel.style.maxHeight = panel.scrollHeight + 'px';
+        }, 50);
       }
 
       accordions.forEach((acc) => {
@@ -1073,6 +1076,9 @@
             const section = this.closest('.menu-section');
             if (section) section.classList.add('open');
             panel.style.maxHeight = panel.scrollHeight + 'px';
+            window.setTimeout(() => {
+              panel.style.maxHeight = panel.scrollHeight + 'px';
+            }, 50);
           }
         });
       });
