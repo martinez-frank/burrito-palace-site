@@ -188,13 +188,27 @@
     }
 
     .hero-card {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
       border: 1px solid var(--border);
-      background: linear-gradient(160deg, #fffaf2, #f6e6ce);
+      background-color: #f6e6ce;
+      background-image:
+        linear-gradient(135deg, rgba(255, 250, 241, 0.84), rgba(246, 230, 206, 0.62)),
+        linear-gradient(0deg, rgba(75, 41, 26, 0.08), rgba(75, 41, 26, 0.08)),
+        url('/images/burrito-palace-combo-plate-hero.jpg');
+      background-size: cover;
+      background-position: center center;
       border-radius: 20px;
       box-shadow: var(--shadow);
       padding: 20px;
       display: grid;
       gap: 12px;
+    }
+
+    .hero-card > * {
+      position: relative;
+      z-index: 1;
     }
 
     .hero-secondary-nav {
@@ -538,6 +552,11 @@
 
       .hero {
         padding-top: 10px;
+      }
+
+      .hero-card {
+        background-position: 62% center;
+        padding: 18px;
       }
 
       .brand-text {
