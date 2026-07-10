@@ -3,232 +3,48 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Burrito Palace</title>
+  <title>Burrito Palace | Mexican Restaurant in Vacaville, CA</title>
+  <meta name="description" content="View the Burrito Palace menu, business hours, location, takeout phone number, and online ordering options in Vacaville, California.">
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <script>
+    window.BURRITO_PALACE_CONFIG = {
+      name: 'Burrito Palace',
+      phoneDisplay: '(707) 447-1250',
+      telephoneUri: 'tel:+17074471250',
+      address: ['1100 Marshall Road', 'Vacaville, CA 95687'],
+      directionsUrl: 'https://www.google.com/maps/search/?api=1&query=1100+Marshall+Road+Vacaville+CA+95687',
+      hours: { mondaySaturday: '9:00 AM–7:30 PM', sunday: '9:00 AM–1:00 PM' },
+      timeZone: 'America/Los_Angeles',
+      doorDashUrl: 'https://www.doordash.com/store/burrito-palace-restaurant-vacaville-260476/1788766/?pickup=true',
+      grubhubUrl: 'https://www.grubhub.com/restaurant/burrito-palace-1100-marshall-rd-vacaville/7580688?pickup=true'
+    };
     (function () {
-      var isMobile = false;
-      var hasSeenSplash = false;
-
-      try {
-        isMobile = window.matchMedia && window.matchMedia('(max-width: 767px)').matches;
-      } catch (e) {
-        isMobile = false;
-      }
-
-      try {
-        hasSeenSplash = sessionStorage.getItem('splashShown') === 'true';
-      } catch (e) {
-        hasSeenSplash = false;
-      }
-
-      window.__bpShowMobileSplash = isMobile && !hasSeenSplash;
-
+      var show = false, reduce = false, seen = false;
+      try { show = window.matchMedia && window.matchMedia('(max-width: 767px)').matches; } catch(e) {}
+      try { reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch(e) {}
+      try { seen = sessionStorage.getItem('splashShown') === 'true'; } catch(e) {}
+      window.__bpShowMobileSplash = show && !seen && !reduce;
       if (window.__bpShowMobileSplash) {
-        try {
-          sessionStorage.setItem('splashShown', 'true');
-        } catch (e) {
-          // Ignore storage failures and continue loading the page.
-        }
-      }
-
-      if (window.__bpShowMobileSplash) {
+        try { sessionStorage.setItem('splashShown', 'true'); } catch(e) {}
         document.documentElement.classList.add('bp-splash-pending');
       }
     })();
   </script>
   <style>
-    :root {
-      /* Base Colors */
-      --cream: #FFF6E8;
-      --warm-brown: #4A2E22;
-      --text-primary: #3B241A;
-      --text-secondary: #6B4A3A;
-
-      /* Brand Red (UPDATED) */
-      --brand-red: #A61E2A;
-      --brand-red-dark: #7F1820;
-
-      /* Surface */
-      --surface: #FFFDF8;
-
-      /* Depth */
-      --shadow-soft: 0 6px 18px rgba(74, 46, 34, 0.10);
-
-      --warm-cream: var(--cream);
-      --grubhub: #F63440;
-      --grubhub-dark: #D12B36;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html,
-    body {
-      margin: 0;
-      min-height: 100%;
-      font-family: "Plus Jakarta Sans", sans-serif;
-      font-weight: 400;
-      color: var(--text-secondary);
-      background: var(--warm-cream);
-    }
-
-    .bp-splash-pending body {
-      overflow: hidden;
-    }
-
-    .app-shell {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-    }
-
-    .site-logo {
-      width: min(320px, 74vw);
-      height: auto;
-      display: block;
-    }
-
-    h1,
-    h2,
-    h3 {
-      font-weight: 600;
-    }
-
-    button {
-      font-weight: 500;
-    }
-
-    .mobile-splash {
-      display: none;
-      position: fixed;
-      inset: 0;
-      z-index: 9999;
-      background: var(--warm-cream);
-      align-items: center;
-      justify-content: center;
-      pointer-events: none;
-      opacity: 0;
-    }
-
-    .mobile-splash__logo {
-      width: min(300px, 68vw);
-      height: auto;
-      opacity: 0;
-      transform: scale(0.95);
-    }
-
-    .bp-splash-pending .mobile-splash {
-      display: flex;
-      opacity: 1;
-      animation: bpOverlayOut 1100ms ease forwards;
-    }
-
-    .bp-splash-pending .mobile-splash__logo {
-      animation: bpLogoIntro 1100ms ease forwards;
-    }
-
-    @keyframes bpLogoIntro {
-      0% {
-        opacity: 0;
-        transform: scale(0.94);
-      }
-      32% {
-        opacity: 1;
-        transform: scale(1);
-      }
-      70% {
-        opacity: 1;
-        transform: scale(1.01);
-      }
-      100% {
-        opacity: 0;
-        transform: scale(1.01);
-      }
-    }
-
-    @keyframes bpOverlayOut {
-      0%,
-      78% {
-        opacity: 1;
-      }
-      100% {
-        opacity: 0;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .bp-splash-pending .mobile-splash,
-      .bp-splash-pending .mobile-splash__logo {
-        animation: none !important;
-        opacity: 1;
-        transform: none;
-      }
-    }
-
-    @media (min-width: 768px) {
-      .mobile-splash {
-        display: none !important;
-      }
-    }
+    :root{--cream:#FFF6E8;--warm-brown:#4A2E22;--text-primary:#3B241A;--text-secondary:#6B4A3A;--brand-red:#A61E2A;--brand-red-dark:#7F1820;--surface:#FFFDF8;--shadow-soft:0 6px 18px rgba(74,46,34,.10);--border:#e7d6be;--radius:16px;--radius-pill:999px;--grubhub:#F63440;--grubhub-dark:#D12B36;--header-height:86px}
+    *{box-sizing:border-box} html{scroll-behavior:smooth;scroll-padding-top:calc(var(--header-height) + 18px)} body{margin:0;min-height:100%;font-family:"Plus Jakarta Sans",sans-serif;font-weight:400;color:var(--text-secondary);background:var(--cream);line-height:1.5;padding-bottom:calc(76px + env(safe-area-inset-bottom))}.bp-splash-pending body{overflow:hidden} img{max-width:100%;display:block} a{color:inherit;text-decoration:none}.container{width:min(1100px,92vw);margin:0 auto} h1,h2,h3{font-weight:600;color:var(--text-primary);letter-spacing:-.3px}.top-header{position:sticky;top:0;z-index:30;background:rgba(248,240,226,.97);backdrop-filter:blur(6px);border-bottom:1px solid var(--border);min-height:var(--header-height);display:flex;align-items:center}.nav-container{display:flex;align-items:center;gap:14px;justify-content:space-between}.nav-brand{display:flex;align-items:center;gap:10px}.logo{height:72px;width:auto}.nav-wordmark{height:44px;width:auto}.nav-links{display:flex;gap:14px;flex-wrap:wrap;font-weight:600;font-size:.93rem}.btn{border:0;border-radius:var(--radius-pill);padding:11px 16px;font-weight:500;font-size:.9rem;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;min-height:44px}.btn-primary{color:#fff;background:var(--brand-red);box-shadow:var(--shadow-soft)}.btn-primary:hover,.btn-primary:focus-visible{background:var(--brand-red-dark)}.btn-secondary{color:var(--text-primary);background:#f2e2ca}.btn-tertiary{color:var(--text-secondary);background:#f7eddc;border:1px solid #ebd5b6}.btn-grubhub{background:var(--grubhub);color:#fff}.btn-grubhub:hover,.btn-grubhub:focus-visible{background:var(--grubhub-dark)} a:focus-visible,button:focus-visible{outline:3px solid var(--brand-red);outline-offset:3px}.hero{padding:30px 0 18px}.hero-card,.info-card{border:1px solid var(--border);background:var(--surface);border-radius:20px;box-shadow:var(--shadow-soft);padding:24px}.hero-card{background-image:linear-gradient(to bottom,rgba(255,255,255,.84),rgba(255,255,255,.96)),url('/images/burrito-palace-combo-plate-hero.jpg');background-size:cover;background-position:center;display:grid;gap:14px}.hero-wordmark{height:62px;width:auto}.hero h1{font-size:clamp(2rem,5vw,3.3rem);line-height:1.08;margin:0}.hero p{margin:0;max-width:62ch;color:var(--text-primary);font-weight:500}.actions,.order-actions{display:flex;gap:10px;flex-wrap:wrap}.content-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding:8px 0 34px}.info-card h2{margin-top:0}.hours-list{display:grid;gap:10px}.hours-row{display:flex;justify-content:space-between;gap:16px;border-bottom:1px solid #f0e0c8;padding-bottom:8px}.hours-row.sunday{background:#fff6e8;border:1px solid #ebd5b6;border-radius:12px;padding:10px}.footer{border-top:1px solid var(--border);padding:22px 0 92px;color:var(--text-secondary)}.mobile-splash{display:none;position:fixed;inset:0;z-index:9999;background:var(--cream);align-items:center;justify-content:center;pointer-events:none;opacity:0}.mobile-splash__logo{width:min(300px,68vw);height:auto;opacity:0;transform:scale(.95)}.bp-splash-pending .mobile-splash{display:flex;opacity:1;animation:bpOverlayOut 1100ms ease forwards}.bp-splash-pending .mobile-splash__logo{animation:bpLogoIntro 1100ms ease forwards}@keyframes bpLogoIntro{0%{opacity:0;transform:scale(.94)}32%,70%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(1.01)}}@keyframes bpOverlayOut{0%,78%{opacity:1}100%{opacity:0}}.mobile-order-bar{position:fixed;left:0;right:0;bottom:0;z-index:40;padding:10px 12px calc(12px + env(safe-area-inset-bottom));background:linear-gradient(to top,rgba(248,240,226,1),rgba(248,240,226,.92));border-top:1px solid var(--border);display:flex;gap:8px}.mobile-order-bar .btn{flex:1;min-height:46px;padding:10px 8px}@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.bp-splash-pending .mobile-splash{display:none!important}}@media (max-width:800px){:root{--header-height:112px}.nav-container{flex-direction:column;justify-content:center;gap:4px;padding:8px 0}.logo{height:68px}.nav-wordmark{display:none}.nav-links{justify-content:center;gap:8px}.nav-links a{min-height:44px;display:inline-flex;align-items:center}.content-grid{grid-template-columns:1fr}.hero{padding-top:16px}.hero-card,.info-card{padding:18px}.actions .btn,.order-actions .btn{flex:1 1 150px}}@media (min-width:801px){body{padding-bottom:0}.mobile-order-bar{display:none}.footer{padding-bottom:22px}}
   </style>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Restaurant","name":"Burrito Palace","telephone":"+1-707-447-1250","address":{"@type":"PostalAddress","streetAddress":"1100 Marshall Road","addressLocality":"Vacaville","addressRegion":"CA","postalCode":"95687","addressCountry":"US"},"servesCuisine":"Mexican","hasMenu":"/menu.html","openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"09:00","closes":"19:30"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Sunday","opens":"09:00","closes":"13:00"}]}</script>
 </head>
 <body>
-  <div class="mobile-splash" id="mobileSplash" aria-hidden="true">
-    <img src="/images/burrito-palace-logo.png" alt="" class="mobile-splash__logo">
-  </div>
-
-  <main class="app-shell" aria-label="Burrito Palace home">
-    <img src="/images/burrito-palace-logo.png" alt="Burrito Palace Logo" class="site-logo">
+  <div class="mobile-splash" id="mobileSplash" aria-hidden="true"><img src="/images/burrito-palace-logo.png" alt="" class="mobile-splash__logo"></div>
+  <header class="top-header"><div class="container nav-container"><a href="/" class="nav-brand"><img src="/images/burrito-palace-logo.png" alt="Burrito Palace logo" class="logo"><img src="/images/burrito-palace.png" alt="Burrito Palace" class="nav-wordmark"></a><nav class="nav-links" aria-label="Primary navigation"><a href="/" aria-current="page">Home</a><a href="/menu.html">Menu</a><a href="/#hours">Hours</a><a href="/#order-online">Order Online</a><a href="/#contact">Contact</a></nav></div></header>
+  <main>
+    <section class="hero container"><div class="hero-card"><img src="/images/burrito-palace.png" alt="Burrito Palace" class="hero-wordmark"><p>Burrito Palace</p><h1>Fresh Mexican Food in Vacaville</h1><p>View our menu, call ahead for takeout, or order through one of our delivery partners.</p><div class="actions"><a class="btn btn-primary" href="/menu.html">View Menu</a><a class="btn btn-secondary" href="tel:+17074471250" aria-label="Call Burrito Palace at (707) 447-1250">Call for Takeout</a><a class="btn btn-tertiary" href="https://www.google.com/maps/search/?api=1&query=1100+Marshall+Road+Vacaville+CA+95687" target="_blank" rel="noopener noreferrer" aria-label="Get directions to Burrito Palace at 1100 Marshall Road in Vacaville">Directions</a></div></div></section>
+    <div class="container content-grid"><section class="info-card" id="order-online"><h2>Order Online</h2><p>Order pickup or delivery through one of our third-party ordering partners.</p><div class="order-actions"><a class="btn btn-primary" href="https://www.doordash.com/store/burrito-palace-restaurant-vacaville-260476/1788766/?pickup=true" target="_blank" rel="noopener noreferrer" aria-label="Order Burrito Palace on DoorDash">Order on DoorDash</a><a class="btn btn-grubhub" href="https://www.grubhub.com/restaurant/burrito-palace-1100-marshall-rd-vacaville/7580688?pickup=true" target="_blank" rel="noopener noreferrer" aria-label="Order Burrito Palace on Grubhub">Order on Grubhub</a></div></section><section class="info-card" id="hours"><h2>Business Hours</h2><div class="hours-list"><div class="hours-row"><strong>Monday–Saturday</strong><span>9:00 AM–7:30 PM</span></div><div class="hours-row sunday"><strong>Sunday</strong><span>9:00 AM–1:00 PM</span></div></div><p>Time zone: America/Los_Angeles</p></section><section class="info-card" id="contact"><h2>Contact</h2><p><strong>Burrito Palace</strong><br><a href="https://www.google.com/maps/search/?api=1&query=1100+Marshall+Road+Vacaville+CA+95687" target="_blank" rel="noopener noreferrer" aria-label="Get directions to Burrito Palace at 1100 Marshall Road in Vacaville">1100 Marshall Road<br>Vacaville, CA 95687</a></p><p><a href="tel:+17074471250" aria-label="Call Burrito Palace at (707) 447-1250">(707) 447-1250</a></p></section></div>
   </main>
-
-  <script>
-    (function () {
-      if (!window.__bpShowMobileSplash) {
-        document.documentElement.classList.remove('bp-splash-pending');
-        return;
-      }
-
-      var splash = document.getElementById('mobileSplash');
-      if (!splash) {
-        document.documentElement.classList.remove('bp-splash-pending');
-        return;
-      }
-
-      var finished = false;
-      var reduceMotion = false;
-
-      try {
-        reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      } catch (e) {
-        reduceMotion = false;
-      }
-
-      function completeSplash() {
-        if (finished) {
-          return;
-        }
-        finished = true;
-        document.documentElement.classList.remove('bp-splash-pending');
-
-      }
-
-      if (reduceMotion) {
-        window.setTimeout(completeSplash, 80);
-        return;
-      }
-
-      splash.addEventListener('animationend', function (event) {
-        if (event.animationName === 'bpOverlayOut') {
-          completeSplash();
-        }
-      }, { once: true });
-
-      window.setTimeout(completeSplash, 1300);
-    })();
-  </script>
+  <footer class="footer"><div class="container"><p>&copy; Burrito Palace. Website information pending final restaurant confirmation.</p></div></footer>
+  <div class="mobile-order-bar" aria-label="Quick actions"><a class="btn btn-secondary" href="tel:+17074471250" aria-label="Call Burrito Palace at (707) 447-1250">Call</a><a class="btn btn-tertiary" href="https://www.google.com/maps/search/?api=1&query=1100+Marshall+Road+Vacaville+CA+95687" target="_blank" rel="noopener noreferrer" aria-label="Get directions to Burrito Palace at 1100 Marshall Road in Vacaville">Directions</a><a class="btn btn-primary" href="/menu.html">Menu</a></div>
+  <script>(function(){if(!window.__bpShowMobileSplash){document.documentElement.classList.remove('bp-splash-pending');return}var done=false;function complete(){if(done)return;done=true;document.documentElement.classList.remove('bp-splash-pending')}var splash=document.getElementById('mobileSplash');if(splash){splash.addEventListener('animationend',function(e){if(e.animationName==='bpOverlayOut')complete()},{once:true})}window.setTimeout(complete,1300)})();</script>
 </body>
 </html>

@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Burrito Palace Menu | Burritos, Plates, Seafood & Specials</title>
-  <meta name="description" content="Browse the Burrito Palace menu with burritos, breakfast, a la carta, plates, seafood, soups, sides, drinks, and specials.">
+  <title>Burrito Palace Menu | Vacaville, CA</title>
+  <meta name="description" content="Browse the Burrito Palace menu and order takeout, pickup, or delivery in Vacaville, California.">
+  <script>document.documentElement.classList.add('js');</script>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -350,7 +351,7 @@
       display: grid;
       grid-template-columns: 1fr;
       gap: 12px;
-      padding: 8px 0 132px;
+      padding: 8px 0 calc(132px + env(safe-area-inset-bottom));
     }
 
     .menu-section {
@@ -400,9 +401,14 @@
     }
 
     .panel {
+      max-height: none;
+      overflow: visible;
+      transition: max-height 0.3s ease;
+    }
+
+    .js .panel {
       max-height: 0;
       overflow: hidden;
-      transition: max-height 0.3s ease;
     }
 
     .grid-two {
@@ -675,6 +681,10 @@
       }
     }
 
+    a:focus-visible, button:focus-visible { outline: 3px solid var(--brand-red); outline-offset: 3px; }
+
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
+
     @media (max-width: 640px) {
       .logo {
         height: 90px;
@@ -695,24 +705,21 @@
 <body>
   <header class="top-header" aria-label="Primary navigation">
     <div class="container nav-container">
-      <a href="/index.html" class="nav-brand" id="homeLogoLink">
+      <a href="/" class="nav-brand">
         <img src="/images/burrito-palace-logo.png" alt="Burrito Palace Logo" class="logo">
-        </a>
-      <img 
-        src="/images/burrito-palace.png" 
-        alt="Burrito Palace"
-        class="nav-wordmark"
-      />
+        <img src="/images/burrito-palace.png" alt="Burrito Palace" class="nav-wordmark">
+      </a>
       <nav class="nav-links nav-menu">
+        <a href="/">Home</a>
         <a href="/menu.html" aria-current="page">Menu</a>
-        <a href="#" aria-label="About section link placeholder">About</a>
-        <a href="#" aria-label="Catering section link placeholder">Catering</a>
-        <a href="#" aria-label="Contact section link placeholder">Contact</a>
+        <a href="/#hours">Hours</a>
+        <a href="/#order-online">Order Online</a>
+        <a href="/#contact">Contact</a>
       </nav>
       <div class="header-actions nav-actions">
-        <a class="btn btn-tertiary" href="tel:+15555550123" aria-label="Call Burrito Palace">Call</a>
-        <a class="btn btn-primary" href="https://www.doordash.com/" target="_blank" rel="noopener noreferrer">DoorDash</a>
-        <a class="btn btn-grubhub" href="https://www.grubhub.com/" target="_blank" rel="noopener noreferrer">Grubhub</a>
+        <a class="btn btn-tertiary" href="tel:+17074471250" aria-label="Call Burrito Palace at (707) 447-1250">Call for Takeout</a>
+        <a class="btn btn-primary" href="https://www.doordash.com/store/burrito-palace-restaurant-vacaville-260476/1788766/?pickup=true" target="_blank" rel="noopener noreferrer" aria-label="Order Burrito Palace on DoorDash">Order on DoorDash</a>
+        <a class="btn btn-grubhub" href="https://www.grubhub.com/restaurant/burrito-palace-1100-marshall-rd-vacaville/7580688?pickup=true" target="_blank" rel="noopener noreferrer" aria-label="Order Burrito Palace on Grubhub">Order on Grubhub</a>
       </div>
     </div>
   </header>
@@ -743,16 +750,17 @@
           class="hero-wordmark"
         />
         <h1 class="hero-title">Order Fast. Eat Fresh.</h1>
-        <p>Browse our full menu by category, open a section, and place your order online for pickup.</p>
+        <p>Browse our full menu by category, call ahead for takeout, or order through one of our third-party ordering partners.</p>
         <nav class="hero-secondary-nav" aria-label="Secondary navigation">
+          <a href="/">Home</a>
           <a href="/menu.html" aria-current="page">Menu</a>
-          <a href="#" aria-label="About section link placeholder">About</a>
-          <a href="#" aria-label="Catering section link placeholder">Catering</a>
-          <a href="#" aria-label="Contact section link placeholder">Contact</a>
+          <a href="/#hours">Hours</a>
+          <a href="/#order-online">Order Online</a>
+          <a href="/#contact">Contact</a>
         </nav>
         <div class="section-actions hero-cta-row">
-          <a class="btn btn-primary" id="order" href="https://www.doordash.com/" target="_blank" rel="noopener noreferrer">DoorDash</a>
-          <a class="btn btn-grubhub" href="https://www.grubhub.com/" target="_blank" rel="noopener noreferrer">Grubhub</a>
+          <a class="btn btn-primary" href="https://www.doordash.com/store/burrito-palace-restaurant-vacaville-260476/1788766/?pickup=true" target="_blank" rel="noopener noreferrer" aria-label="Order Burrito Palace on DoorDash">Order on DoorDash</a>
+          <a class="btn btn-grubhub" href="https://www.grubhub.com/restaurant/burrito-palace-1100-marshall-rd-vacaville/7580688?pickup=true" target="_blank" rel="noopener noreferrer" aria-label="Order Burrito Palace on Grubhub">Order on Grubhub</a>
         </div>
       </div>
     </section>
@@ -798,7 +806,7 @@
 
           <p class="note">Whole beans available upon request.</p>
           <p class="note">No substitutions, any additions will be extra. Thank you.</p>
-          <div class="section-actions"><a class="btn btn-primary" href="https://www.doordash.com/" target="_blank" rel="noopener noreferrer">DoorDash</a><a class="btn btn-grubhub" href="https://www.grubhub.com/" target="_blank" rel="noopener noreferrer">Grubhub</a></div>
+          <div class="section-actions"><a class="btn btn-primary" href="https://www.doordash.com/store/burrito-palace-restaurant-vacaville-260476/1788766/?pickup=true" target="_blank" rel="noopener noreferrer" aria-label="Order Burrito Palace on DoorDash">Order on DoorDash</a><a class="btn btn-grubhub" href="https://www.grubhub.com/restaurant/burrito-palace-1100-marshall-rd-vacaville/7580688?pickup=true" target="_blank" rel="noopener noreferrer" aria-label="Order Burrito Palace on Grubhub">Order on Grubhub</a></div>
         </div>
       </article>
 
@@ -813,7 +821,7 @@
             <li class="menu-item"><div class="item-row"><span>Tocino (Bacon)</span><span class="price">$11.90</span></div></li>
             <li class="menu-item"><div class="item-row"><span>Jamon (Ham)</span><span class="price">$11.90</span></div></li>
           </ul>
-          <div class="section-actions"><a class="btn btn-primary" href="https://www.doordash.com/" target="_blank" rel="noopener noreferrer">DoorDash</a><a class="btn btn-grubhub" href="https://www.grubhub.com/" target="_blank" rel="noopener noreferrer">Grubhub</a></div>
+          <div class="section-actions"><a class="btn btn-primary" href="https://www.doordash.com/store/burrito-palace-restaurant-vacaville-260476/1788766/?pickup=true" target="_blank" rel="noopener noreferrer" aria-label="Order Burrito Palace on DoorDash">Order on DoorDash</a><a class="btn btn-grubhub" href="https://www.grubhub.com/restaurant/burrito-palace-1100-marshall-rd-vacaville/7580688?pickup=true" target="_blank" rel="noopener noreferrer" aria-label="Order Burrito Palace on Grubhub">Order on Grubhub</a></div>
         </div>
       </article>
 
@@ -843,7 +851,7 @@
               <li class="menu-item"><div class="item-row"><span>Quesabirria</span><span class="price">$4.75</span></div><p class="desc">Birria beef, folded in a corn tortilla, with melted cheese, served with consume</p></li>
             </ul>
           </div>
-          <div class="section-actions" style="grid-column: 1 / -1;"><a class="btn btn-primary" href="https://www.doordash.com/" target="_blank" rel="noopener noreferrer">DoorDash</a><a class="btn btn-grubhub" href="https://www.grubhub.com/" target="_blank" rel="noopener noreferrer">Grubhub</a></div>
+          <div class="section-actions" ><a class="btn btn-primary" href="https://www.doordash.com/store/burrito-palace-restaurant-vacaville-260476/1788766/?pickup=true" target="_blank" rel="noopener noreferrer" aria-label="Order Burrito Palace on DoorDash">Order on DoorDash</a><a class="btn btn-grubhub" href="https://www.grubhub.com/restaurant/burrito-palace-1100-marshall-rd-vacaville/7580688?pickup=true" target="_blank" rel="noopener noreferrer" aria-label="Order Burrito Palace on Grubhub">Order on Grubhub</a></div>
         </div>
       </article>
 
@@ -880,7 +888,7 @@
             <li class="menu-item"><div class="item-row"><span>33. Huevos Rancheros</span><span class="price">$14.00</span></div><p class="desc">Two eggs over easy, topped with red enchilada salsa, and cheese</p></li>
             <li class="menu-item"><div class="item-row"><span>34. Chilaquiles</span><span class="price">$14.00</span></div><p class="desc">Pieces of tortilla fried with eggs, house hot sauce, cheese and sour cream</p></li>
           </ul>
-          <div class="section-actions"><a class="btn btn-primary" href="https://www.doordash.com/" target="_blank" rel="noopener noreferrer">DoorDash</a><a class="btn btn-grubhub" href="https://www.grubhub.com/" target="_blank" rel="noopener noreferrer">Grubhub</a></div>
+          <div class="section-actions"><a class="btn btn-primary" href="https://www.doordash.com/store/burrito-palace-restaurant-vacaville-260476/1788766/?pickup=true" target="_blank" rel="noopener noreferrer" aria-label="Order Burrito Palace on DoorDash">Order on DoorDash</a><a class="btn btn-grubhub" href="https://www.grubhub.com/restaurant/burrito-palace-1100-marshall-rd-vacaville/7580688?pickup=true" target="_blank" rel="noopener noreferrer" aria-label="Order Burrito Palace on Grubhub">Order on Grubhub</a></div>
         </div>
       </article>
 
@@ -898,7 +906,7 @@
             <li class="menu-item"><div class="item-row"><span>Coctel De Camaron</span><span class="price">$19.75</span></div><p class="desc">Shrimp Cocktail</p></li>
             <li class="menu-item"><div class="item-row"><span>Camarones A La Diabla</span><span class="price">$19.75</span></div><p class="desc">Sauteed prawn in house hot sauce</p></li>
           </ul>
-          <div class="section-actions"><a class="btn btn-primary" href="https://www.doordash.com/" target="_blank" rel="noopener noreferrer">DoorDash</a><a class="btn btn-grubhub" href="https://www.grubhub.com/" target="_blank" rel="noopener noreferrer">Grubhub</a></div>
+          <div class="section-actions"><a class="btn btn-primary" href="https://www.doordash.com/store/burrito-palace-restaurant-vacaville-260476/1788766/?pickup=true" target="_blank" rel="noopener noreferrer" aria-label="Order Burrito Palace on DoorDash">Order on DoorDash</a><a class="btn btn-grubhub" href="https://www.grubhub.com/restaurant/burrito-palace-1100-marshall-rd-vacaville/7580688?pickup=true" target="_blank" rel="noopener noreferrer" aria-label="Order Burrito Palace on Grubhub">Order on Grubhub</a></div>
         </div>
       </article>
 
@@ -911,7 +919,7 @@
             <li class="menu-item"><div class="item-row"><span>Menudo (Tripe Soup)</span><span class="price">Small $15.50 / Large $17.50</span></div></li>
             <li class="menu-item"><div class="item-row"><span>Pozole</span><span class="price">Small $13.75 / Large $15.75</span></div></li>
           </ul>
-          <div class="section-actions"><a class="btn btn-primary" href="https://www.doordash.com/" target="_blank" rel="noopener noreferrer">DoorDash</a><a class="btn btn-grubhub" href="https://www.grubhub.com/" target="_blank" rel="noopener noreferrer">Grubhub</a></div>
+          <div class="section-actions"><a class="btn btn-primary" href="https://www.doordash.com/store/burrito-palace-restaurant-vacaville-260476/1788766/?pickup=true" target="_blank" rel="noopener noreferrer" aria-label="Order Burrito Palace on DoorDash">Order on DoorDash</a><a class="btn btn-grubhub" href="https://www.grubhub.com/restaurant/burrito-palace-1100-marshall-rd-vacaville/7580688?pickup=true" target="_blank" rel="noopener noreferrer" aria-label="Order Burrito Palace on Grubhub">Order on Grubhub</a></div>
         </div>
       </article>
 
@@ -929,7 +937,7 @@
             <li class="menu-item"><div class="item-row"><span>Chips And Guacamole</span><span class="price">Half $6.00 / Full $8.00</span></div></li>
             <li class="menu-item"><div class="item-row"><span>Tortillas (5) (Flour or Corn)</span></div></li>
           </ul>
-          <div class="section-actions"><a class="btn btn-primary" href="https://www.doordash.com/" target="_blank" rel="noopener noreferrer">DoorDash</a><a class="btn btn-grubhub" href="https://www.grubhub.com/" target="_blank" rel="noopener noreferrer">Grubhub</a></div>
+          <div class="section-actions"><a class="btn btn-primary" href="https://www.doordash.com/store/burrito-palace-restaurant-vacaville-260476/1788766/?pickup=true" target="_blank" rel="noopener noreferrer" aria-label="Order Burrito Palace on DoorDash">Order on DoorDash</a><a class="btn btn-grubhub" href="https://www.grubhub.com/restaurant/burrito-palace-1100-marshall-rd-vacaville/7580688?pickup=true" target="_blank" rel="noopener noreferrer" aria-label="Order Burrito Palace on Grubhub">Order on Grubhub</a></div>
         </div>
       </article>
 
@@ -949,7 +957,7 @@
             <li class="menu-item"><div class="item-row"><span>Beer</span><span class="price">Domestic $4.00 or 6 / $21.00 · Imported $5.00 or 6 / $25.00</span></div></li>
             <li class="menu-item"><div class="item-row"><span>Michelada</span><span class="price">$8.75</span></div></li>
           </ul>
-          <div class="section-actions"><a class="btn btn-primary" href="https://www.doordash.com/" target="_blank" rel="noopener noreferrer">DoorDash</a><a class="btn btn-grubhub" href="https://www.grubhub.com/" target="_blank" rel="noopener noreferrer">Grubhub</a></div>
+          <div class="section-actions"><a class="btn btn-primary" href="https://www.doordash.com/store/burrito-palace-restaurant-vacaville-260476/1788766/?pickup=true" target="_blank" rel="noopener noreferrer" aria-label="Order Burrito Palace on DoorDash">Order on DoorDash</a><a class="btn btn-grubhub" href="https://www.grubhub.com/restaurant/burrito-palace-1100-marshall-rd-vacaville/7580688?pickup=true" target="_blank" rel="noopener noreferrer" aria-label="Order Burrito Palace on Grubhub">Order on Grubhub</a></div>
         </div>
       </article>
 
@@ -978,16 +986,16 @@
             <li class="menu-item"><div class="item-row"><span>Burrito Special, Your choice of Meat Served With Rice And Beans</span><span class="price">$7.75</span></div></li>
           </ul>
 
-          <div class="section-actions"><a class="btn btn-primary" href="https://www.doordash.com/" target="_blank" rel="noopener noreferrer">DoorDash</a><a class="btn btn-grubhub" href="https://www.grubhub.com/" target="_blank" rel="noopener noreferrer">Grubhub</a></div>
+          <div class="section-actions"><a class="btn btn-primary" href="https://www.doordash.com/store/burrito-palace-restaurant-vacaville-260476/1788766/?pickup=true" target="_blank" rel="noopener noreferrer" aria-label="Order Burrito Palace on DoorDash">Order on DoorDash</a><a class="btn btn-grubhub" href="https://www.grubhub.com/restaurant/burrito-palace-1100-marshall-rd-vacaville/7580688?pickup=true" target="_blank" rel="noopener noreferrer" aria-label="Order Burrito Palace on Grubhub">Order on Grubhub</a></div>
         </div>
       </article>
     </section>
   </main>
 
   <div class="mobile-order-bar" aria-label="Quick order actions">
-    <a class="btn btn-primary" href="https://www.doordash.com/" target="_blank" rel="noopener noreferrer">DoorDash</a>
-    <a class="btn btn-grubhub" href="https://www.grubhub.com/" target="_blank" rel="noopener noreferrer">Grubhub</a>
-    <a class="btn btn-tertiary" href="tel:+15555550123" aria-label="Call Burrito Palace">Call</a>
+    <a class="btn btn-tertiary" href="tel:+17074471250" aria-label="Call Burrito Palace at (707) 447-1250">Call</a>
+    <a class="btn btn-primary" href="https://www.doordash.com/store/burrito-palace-restaurant-vacaville-260476/1788766/?pickup=true" target="_blank" rel="noopener noreferrer" aria-label="Order Burrito Palace on DoorDash">DoorDash</a>
+    <a class="btn btn-grubhub" href="https://www.grubhub.com/restaurant/burrito-palace-1100-marshall-rd-vacaville/7580688?pickup=true" target="_blank" rel="noopener noreferrer" aria-label="Order Burrito Palace on Grubhub">Grubhub</a>
   </div>
 
   <script type="application/ld+json">
@@ -1015,107 +1023,84 @@
   </script>
 
   <script>
+    window.BURRITO_PALACE_CONFIG = {
+      name: 'Burrito Palace',
+      phoneDisplay: '(707) 447-1250',
+      telephoneUri: 'tel:+17074471250',
+      address: ['1100 Marshall Road', 'Vacaville, CA 95687'],
+      directionsUrl: 'https://www.google.com/maps/search/?api=1&query=1100+Marshall+Road+Vacaville+CA+95687',
+      hours: { mondaySaturday: '9:00 AM–7:30 PM', sunday: '9:00 AM–1:00 PM' },
+      timeZone: 'America/Los_Angeles',
+      doorDashUrl: 'https://www.doordash.com/store/burrito-palace-restaurant-vacaville-260476/1788766/?pickup=true',
+      grubhubUrl: 'https://www.grubhub.com/restaurant/burrito-palace-1100-marshall-rd-vacaville/7580688?pickup=true'
+    };
+
     (function () {
       const sections = Array.from(document.querySelectorAll('.menu-section'));
-      const accordions = document.querySelectorAll('.accordion');
-      const homeLogoLink = document.getElementById('homeLogoLink');
-
-      if (homeLogoLink) {
-        homeLogoLink.addEventListener('click', (event) => {
-          event.preventDefault();
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-      }
-
+      const accordions = Array.from(document.querySelectorAll('.accordion'));
       const chips = Array.from(document.querySelectorAll('.category-chip'));
+      const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      let applyingHash = false;
 
-      function setChip(target) {
-        chips.forEach((chip) => chip.classList.toggle('active', chip.dataset.target === target || (target === 'all' && chip.dataset.target === 'all')));
-      }
-
-      function closeAllSections() {
-        accordions.forEach((item) => {
-          item.classList.remove('active');
-          item.setAttribute('aria-expanded', 'false');
-          const section = item.closest('.menu-section');
-          if (section) section.classList.remove('open');
-          const panel = item.nextElementSibling;
-          if (panel) panel.style.maxHeight = null;
-        });
-      }
-
-      function openSection(section) {
+      function getPanel(button) { return document.getElementById(button.getAttribute('aria-controls')); }
+      function setPanelHeight(panel, open) { panel.style.maxHeight = open ? panel.scrollHeight + 'px' : '0px'; }
+      function setOpen(section, open) {
         const button = section.querySelector('.accordion');
-        const panel = button && button.nextElementSibling;
-
-        closeAllSections();
-
+        const panel = button && getPanel(button);
         if (!button || !panel) return;
-
-        button.classList.add('active');
-        button.setAttribute('aria-expanded', 'true');
-        section.classList.add('open');
-        panel.style.maxHeight = panel.scrollHeight + 'px';
-        window.setTimeout(() => {
-          panel.style.maxHeight = panel.scrollHeight + 'px';
-        }, 50);
+        section.classList.toggle('open', open);
+        button.classList.toggle('active', open);
+        button.setAttribute('aria-expanded', String(open));
+        setPanelHeight(panel, open);
       }
-
-      accordions.forEach((acc) => {
-        acc.addEventListener('click', function () {
-          const panel = this.nextElementSibling;
-          if (!panel) return;
-
-          const isOpen = panel.style.maxHeight;
-
-          closeAllSections();
-
-          if (!isOpen) {
-            this.classList.add('active');
-            this.setAttribute('aria-expanded', 'true');
-            const section = this.closest('.menu-section');
-            if (section) section.classList.add('open');
-            panel.style.maxHeight = panel.scrollHeight + 'px';
-            window.setTimeout(() => {
-              panel.style.maxHeight = panel.scrollHeight + 'px';
-            }, 50);
-          }
-        });
-      });
-
-      chips.forEach((chip) => {
-        chip.addEventListener('click', (event) => {
-          const targetId = chip.dataset.target;
-          if (targetId === 'all') {
-            setChip('all');
-            closeAllSections();
-            event.preventDefault();
-            return;
-          }
-          const target = document.getElementById(targetId);
-          if (!target) return;
-          setChip(targetId);
-          openSection(target);
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          event.preventDefault();
-        });
-      });
-
-      const observer = new IntersectionObserver((entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-        if (visible) {
-          setChip(visible.target.id);
-        }
-      }, {
-        threshold: [0.35, 0.6],
-        rootMargin: '-35% 0px -45% 0px'
-      });
-
-      sections.forEach((section) => observer.observe(section));
-
-      openSection(sections[0]);
+      function recalcOpenPanels() { sections.forEach(section => { if (section.classList.contains('open')) setPanelHeight(getPanel(section.querySelector('.accordion')), true); }); }
+      function setChip(target) { chips.forEach(chip => chip.classList.toggle('active', chip.dataset.target === target)); }
+      function scrollToSection(section) {
+        const offset = document.querySelector('.top-header').offsetHeight + document.querySelector('.category-bar').offsetHeight + 12;
+        window.scrollTo({ top: section.getBoundingClientRect().top + window.pageYOffset - offset, behavior: reduceMotion ? 'auto' : 'smooth' });
+      }
+      function updateHash(target) {
+        if (location.hash === '#' + target) return;
+        history.pushState(null, '', '#' + target);
+      }
+      function openAll(updateUrl) { sections.forEach(section => setOpen(section, true)); setChip('all'); if (updateUrl) updateHash('all'); recalcOpenPanels(); }
+      function openOnly(targetId, updateUrl, scroll) {
+        const target = document.getElementById(targetId);
+        if (!target) return false;
+        sections.forEach(section => setOpen(section, section === target));
+        setChip(targetId);
+        if (updateUrl) updateHash(targetId);
+        if (scroll) scrollToSection(target);
+        return true;
+      }
+      function applyHash(scroll) {
+        const target = (location.hash || '#all').slice(1);
+        applyingHash = true;
+        if (target === 'all') openAll(false);
+        else if (!openOnly(target, false, scroll)) openAll(false);
+        applyingHash = false;
+      }
+      chips.forEach(chip => chip.addEventListener('click', event => {
+        event.preventDefault();
+        const target = chip.dataset.target;
+        if (target === 'all') openAll(true);
+        else openOnly(target, true, true);
+      }));
+      accordions.forEach(button => button.addEventListener('click', () => {
+        const section = button.closest('.menu-section');
+        const willOpen = button.getAttribute('aria-expanded') !== 'true';
+        setOpen(section, willOpen);
+        const openSections = sections.filter(item => item.classList.contains('open'));
+        if (openSections.length === sections.length) { setChip('all'); updateHash('all'); }
+        else if (willOpen && openSections.length === 1) { setChip(section.id); updateHash(section.id); }
+        else { chips.forEach(chip => chip.classList.remove('active')); }
+      }));
+      window.addEventListener('hashchange', () => { if (!applyingHash) applyHash(true); });
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(recalcOpenPanels);
+      window.addEventListener('load', recalcOpenPanels);
+      let resizeTimer;
+      window.addEventListener('resize', () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(recalcOpenPanels, 120); });
+      applyHash(false);
     })();
   </script>
 </body>
