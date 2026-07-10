@@ -351,11 +351,12 @@
       border-radius: var(--radius);
       background: var(--card);
       box-shadow: var(--shadow);
-      overflow: clip;
+      overflow: hidden;
     }
 
     .section-toggle {
       width: 100%;
+      min-height: 68px;
       background: transparent;
       border: 0;
       display: flex;
@@ -364,8 +365,13 @@
       gap: 8px;
       text-align: left;
       color: var(--text-primary);
-      padding: 14px 14px 12px;
+      padding: 14px;
       cursor: pointer;
+    }
+
+    .section-title-wrap {
+      flex: 1;
+      min-width: 0;
     }
 
     .section-title-wrap h2 {
@@ -389,6 +395,10 @@
     .menu-section.open .section-toggle .chevron { transform: rotate(180deg); }
 
     .section-content {
+      padding: 0;
+    }
+
+    .panel-inner {
       padding: 0 14px 16px;
     }
 
@@ -527,7 +537,11 @@
 
       .section-content {
         display: block;
-        padding-bottom: 16px;
+      }
+
+      .js .panel {
+        max-height: none !important;
+        overflow: visible;
       }
 
       .mobile-order-bar { display: none; }
@@ -683,7 +697,7 @@
       }
 
       .section-toggle {
-        padding: 14px 14px 10px;
+        padding: 14px;
       }
 
       .section-title-wrap h2 {
@@ -811,6 +825,7 @@
           <span class="section-title-wrap"><h2>Burritos</h2></span><span class="chevron">⌄</span>
         </button>
         <div class="section-content panel" id="content-burritos">
+          <div class="panel-inner">
           <ul class="menu-items">
             <li class="menu-item"><div class="item-row"><span>1. Carne Asada (Steak)</span></div></li>
             <li class="menu-item"><div class="item-row"><span>2. Pollo Asada (Grilled Chicken)</span></div></li>
@@ -847,6 +862,7 @@
           <p class="note">Whole beans available upon request.</p>
           <p class="note">No substitutions, any additions will be extra. Thank you.</p>
           <div class="section-actions"><a class="btn btn-primary" href="https://www.doordash.com/store/burrito-palace-restaurant-vacaville-260476/1788766/?pickup=true" target="_blank" rel="noopener noreferrer" aria-label="Order Burrito Palace on DoorDash">Order on DoorDash</a><a class="btn btn-grubhub" href="https://www.grubhub.com/restaurant/burrito-palace-1100-marshall-rd-vacaville/7580688?pickup=true" target="_blank" rel="noopener noreferrer" aria-label="Order Burrito Palace on Grubhub">Order on Grubhub</a></div>
+          </div>
         </div>
       </article>
 
@@ -855,6 +871,7 @@
           <span class="section-title-wrap"><h2>Breakfast</h2><span class="section-subtitle">Choice of meat, with scrambled eggs, potatoes, and cheese</span></span><span class="chevron">⌄</span>
         </button>
         <div class="section-content panel" id="content-breakfast">
+          <div class="panel-inner">
           <ul class="menu-items">
             <li class="menu-item"><div class="item-row"><span>Carne Asada (Steak)</span><span class="price">$11.90</span></div></li>
             <li class="menu-item"><div class="item-row"><span>Chorizo (Mexican Sausage)</span><span class="price">$11.90</span></div></li>
@@ -862,6 +879,7 @@
             <li class="menu-item"><div class="item-row"><span>Jamon (Ham)</span><span class="price">$11.90</span></div></li>
           </ul>
           <div class="section-actions"><a class="btn btn-primary" href="https://www.doordash.com/store/burrito-palace-restaurant-vacaville-260476/1788766/?pickup=true" target="_blank" rel="noopener noreferrer" aria-label="Order Burrito Palace on DoorDash">Order on DoorDash</a><a class="btn btn-grubhub" href="https://www.grubhub.com/restaurant/burrito-palace-1100-marshall-rd-vacaville/7580688?pickup=true" target="_blank" rel="noopener noreferrer" aria-label="Order Burrito Palace on Grubhub">Order on Grubhub</a></div>
+          </div>
         </div>
       </article>
 
@@ -869,7 +887,8 @@
         <button class="section-toggle accordion" aria-expanded="false" aria-controls="content-a-la-carta">
           <span class="section-title-wrap"><h2>A La Carta</h2></span><span class="chevron">⌄</span>
         </button>
-        <div class="section-content panel grid-two" id="content-a-la-carta">
+        <div class="section-content panel" id="content-a-la-carta">
+          <div class="panel-inner grid-two">
           <div>
             <ul class="menu-items">
               <li class="menu-item"><div class="item-row"><span>Two Shrimp Soft Tacos</span><span class="price">$10.75</span></div><p class="desc">Prawns, grilled with onion, and bell peppers, topped with lettuce and cheese</p></li>
@@ -892,6 +911,7 @@
             </ul>
           </div>
           <div class="section-actions" ><a class="btn btn-primary" href="https://www.doordash.com/store/burrito-palace-restaurant-vacaville-260476/1788766/?pickup=true" target="_blank" rel="noopener noreferrer" aria-label="Order Burrito Palace on DoorDash">Order on DoorDash</a><a class="btn btn-grubhub" href="https://www.grubhub.com/restaurant/burrito-palace-1100-marshall-rd-vacaville/7580688?pickup=true" target="_blank" rel="noopener noreferrer" aria-label="Order Burrito Palace on Grubhub">Order on Grubhub</a></div>
+          </div>
         </div>
       </article>
 
@@ -900,6 +920,7 @@
           <span class="section-title-wrap"><h2>Plates</h2></span><span class="chevron">⌄</span>
         </button>
         <div class="section-content panel" id="content-plates">
+          <div class="panel-inner">
           <ul class="menu-items">
             <li class="menu-item"><div class="item-row"><span>14. Philly Cheese Steak</span><span class="price">$10.75</span></div><p class="desc">Steak, grilled bell peppers, and onions topped with swiss cheese</p></li>
             <li class="menu-item"><div class="item-row"><span>15. Torta</span><span class="price">$10.75</span></div><p class="desc">Mexican roll with beans, cheese, tomato, onion, avocado, lettuce, and your choice of meat</p></li>
@@ -929,6 +950,7 @@
             <li class="menu-item"><div class="item-row"><span>34. Chilaquiles</span><span class="price">$14.00</span></div><p class="desc">Pieces of tortilla fried with eggs, house hot sauce, cheese and sour cream</p></li>
           </ul>
           <div class="section-actions"><a class="btn btn-primary" href="https://www.doordash.com/store/burrito-palace-restaurant-vacaville-260476/1788766/?pickup=true" target="_blank" rel="noopener noreferrer" aria-label="Order Burrito Palace on DoorDash">Order on DoorDash</a><a class="btn btn-grubhub" href="https://www.grubhub.com/restaurant/burrito-palace-1100-marshall-rd-vacaville/7580688?pickup=true" target="_blank" rel="noopener noreferrer" aria-label="Order Burrito Palace on Grubhub">Order on Grubhub</a></div>
+          </div>
         </div>
       </article>
 
@@ -937,6 +959,7 @@
           <span class="section-title-wrap"><h2>Seafood</h2></span><span class="chevron">⌄</span>
         </button>
         <div class="section-content panel" id="content-seafood">
+          <div class="panel-inner">
           <ul class="menu-items">
             <li class="menu-item"><div class="item-row"><span>Huevos Con Chorizo</span><span class="price">$14.00</span></div><p class="desc">Eggs scrambled with Mexican sausage</p></li>
             <li class="menu-item"><div class="item-row"><span>Mexican Omelet</span><span class="price">$14.00</span></div><p class="desc">Stuffed with cheese, and pico</p></li>
@@ -947,6 +970,7 @@
             <li class="menu-item"><div class="item-row"><span>Camarones A La Diabla</span><span class="price">$19.75</span></div><p class="desc">Sauteed prawn in house hot sauce</p></li>
           </ul>
           <div class="section-actions"><a class="btn btn-primary" href="https://www.doordash.com/store/burrito-palace-restaurant-vacaville-260476/1788766/?pickup=true" target="_blank" rel="noopener noreferrer" aria-label="Order Burrito Palace on DoorDash">Order on DoorDash</a><a class="btn btn-grubhub" href="https://www.grubhub.com/restaurant/burrito-palace-1100-marshall-rd-vacaville/7580688?pickup=true" target="_blank" rel="noopener noreferrer" aria-label="Order Burrito Palace on Grubhub">Order on Grubhub</a></div>
+          </div>
         </div>
       </article>
 
@@ -955,11 +979,13 @@
           <span class="section-title-wrap"><h2>Soups</h2></span><span class="chevron">⌄</span>
         </button>
         <div class="section-content panel" id="content-soups">
+          <div class="panel-inner">
           <ul class="menu-items">
             <li class="menu-item"><div class="item-row"><span>Menudo (Tripe Soup)</span><span class="price">Small $15.50 / Large $17.50</span></div></li>
             <li class="menu-item"><div class="item-row"><span>Pozole</span><span class="price">Small $13.75 / Large $15.75</span></div></li>
           </ul>
           <div class="section-actions"><a class="btn btn-primary" href="https://www.doordash.com/store/burrito-palace-restaurant-vacaville-260476/1788766/?pickup=true" target="_blank" rel="noopener noreferrer" aria-label="Order Burrito Palace on DoorDash">Order on DoorDash</a><a class="btn btn-grubhub" href="https://www.grubhub.com/restaurant/burrito-palace-1100-marshall-rd-vacaville/7580688?pickup=true" target="_blank" rel="noopener noreferrer" aria-label="Order Burrito Palace on Grubhub">Order on Grubhub</a></div>
+          </div>
         </div>
       </article>
 
@@ -968,6 +994,7 @@
           <span class="section-title-wrap"><h2>Sides</h2></span><span class="chevron">⌄</span>
         </button>
         <div class="section-content panel" id="content-sides">
+          <div class="panel-inner">
           <ul class="menu-items">
             <li class="menu-item"><div class="item-row"><span>Arroz O Frijoles Chico (Small Rice or Beans)</span><span class="price">$7.75</span></div></li>
             <li class="menu-item"><div class="item-row"><span>Arroz O Frijoles Mediano (Medium Rice or Beans)</span><span class="price">$8.75</span></div></li>
@@ -978,6 +1005,7 @@
             <li class="menu-item"><div class="item-row"><span>Tortillas (5) (Flour or Corn)</span></div></li>
           </ul>
           <div class="section-actions"><a class="btn btn-primary" href="https://www.doordash.com/store/burrito-palace-restaurant-vacaville-260476/1788766/?pickup=true" target="_blank" rel="noopener noreferrer" aria-label="Order Burrito Palace on DoorDash">Order on DoorDash</a><a class="btn btn-grubhub" href="https://www.grubhub.com/restaurant/burrito-palace-1100-marshall-rd-vacaville/7580688?pickup=true" target="_blank" rel="noopener noreferrer" aria-label="Order Burrito Palace on Grubhub">Order on Grubhub</a></div>
+          </div>
         </div>
       </article>
 
@@ -986,6 +1014,7 @@
           <span class="section-title-wrap"><h2>Drinks / Bebidas</h2></span><span class="chevron">⌄</span>
         </button>
         <div class="section-content panel" id="content-drinks">
+          <div class="panel-inner">
           <ul class="menu-items">
             <li class="menu-item"><div class="item-row"><span>Can Soda (12oz)</span><span class="price">$1.90</span></div></li>
             <li class="menu-item"><div class="item-row"><span>Arizona (Teas)</span><span class="price">$1.90</span></div></li>
@@ -998,6 +1027,7 @@
             <li class="menu-item"><div class="item-row"><span>Michelada</span><span class="price">$8.75</span></div></li>
           </ul>
           <div class="section-actions"><a class="btn btn-primary" href="https://www.doordash.com/store/burrito-palace-restaurant-vacaville-260476/1788766/?pickup=true" target="_blank" rel="noopener noreferrer" aria-label="Order Burrito Palace on DoorDash">Order on DoorDash</a><a class="btn btn-grubhub" href="https://www.grubhub.com/restaurant/burrito-palace-1100-marshall-rd-vacaville/7580688?pickup=true" target="_blank" rel="noopener noreferrer" aria-label="Order Burrito Palace on Grubhub">Order on Grubhub</a></div>
+          </div>
         </div>
       </article>
 
@@ -1006,6 +1036,7 @@
           <span class="section-title-wrap"><h2>Specials</h2></span><span class="chevron">⌄</span>
         </button>
         <div class="section-content panel" id="content-specials">
+          <div class="panel-inner">
           <h3>Monday–Friday · 11AM–2PM</h3>
           <ul class="menu-items">
             <li class="menu-item"><div class="item-row"><span>Choice Of One Item, Served With Rice And Beans</span><span class="price">$10.25</span></div><p class="desc">Taco (Soft or Hard), Enchilada, Tamal, or Flauta</p></li>
@@ -1027,6 +1058,7 @@
           </ul>
 
           <div class="section-actions"><a class="btn btn-primary" href="https://www.doordash.com/store/burrito-palace-restaurant-vacaville-260476/1788766/?pickup=true" target="_blank" rel="noopener noreferrer" aria-label="Order Burrito Palace on DoorDash">Order on DoorDash</a><a class="btn btn-grubhub" href="https://www.grubhub.com/restaurant/burrito-palace-1100-marshall-rd-vacaville/7580688?pickup=true" target="_blank" rel="noopener noreferrer" aria-label="Order Burrito Palace on Grubhub">Order on Grubhub</a></div>
+          </div>
         </div>
       </article>
     </section>
