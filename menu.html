@@ -77,36 +77,29 @@
       font-weight: 500;
     }
 
-    @media (min-width: 768px) {
+    @media (min-width: 760px) {
       .top-header .nav-container {
         display: grid;
-        grid-template-columns: auto 1fr auto;
+        grid-template-columns: auto minmax(0, 1fr) auto;
         align-items: center;
-        position: relative;
+        gap: 14px;
       }
 
       .top-header .nav-brand {
-        grid-column: 1;
-      }
-
-      .top-header .nav-wordmark {
-        grid-column: 2;
+        min-width: 0;
       }
 
       .top-header .nav-menu {
-        grid-column: 3;
-        justify-self: end;
-        display: flex;
-        gap: 24px;
-        padding-right: 240px;
+        justify-self: center;
+        min-width: 0;
+        flex-wrap: nowrap;
+        justify-content: center;
       }
 
       .top-header .nav-actions {
-        position: absolute;
-        right: 0;
-        top: 50%;
-        transform: translateY(-50%);
+        justify-self: end;
         margin-left: 0;
+        flex-wrap: nowrap;
       }
 
       .logo {
@@ -122,7 +115,6 @@
       background: rgba(248, 240, 226, 0.97);
       backdrop-filter: blur(6px);
       border-bottom: 1px solid var(--border);
-      height: var(--header-height);
       min-height: var(--header-height);
       display: flex;
       align-items: center;
@@ -563,6 +555,55 @@
       }
     }
 
+
+
+    @media (min-width: 760px) and (max-width: 899px) {
+      :root { --header-height: 132px; }
+
+      .top-header .nav-container {
+        display: grid;
+        grid-template-columns: auto auto;
+        grid-template-areas:
+          "brand actions"
+          "menu menu";
+        align-content: center;
+        gap: 6px 12px;
+        padding: 8px 0;
+      }
+
+      .top-header .nav-brand { grid-area: brand; }
+      .top-header .nav-menu { grid-area: menu; justify-self: center; }
+      .top-header .nav-actions { grid-area: actions; justify-self: end; }
+      .top-header .nav-wordmark { display: none; }
+      .top-header .logo { height: 58px; transform: none; }
+      .top-header .nav-menu,
+      .top-header .nav-actions { flex-wrap: nowrap; }
+      .top-header .nav-links { gap: 14px; }
+    }
+
+    @media (min-width: 900px) {
+      .top-header .nav-container {
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr) auto;
+        align-items: center;
+        gap: 14px;
+      }
+
+      .top-header .nav-brand,
+      .top-header .nav-menu,
+      .top-header .nav-actions { min-width: 0; }
+      .top-header .nav-menu { justify-self: center; justify-content: center; }
+      .top-header .nav-actions { justify-self: end; margin-left: 0; }
+      .top-header .nav-menu,
+      .top-header .nav-actions { flex-wrap: nowrap; }
+      .top-header .nav-wordmark { display: none; }
+    }
+
+    @media (min-width: 1180px) {
+      .top-header .nav-wordmark { display: block; }
+      .top-header .nav-container { gap: 18px; }
+    }
+
     @media (max-width: 759px) {
       :root {
         --header-height: 88px;
@@ -713,13 +754,12 @@
         <a href="/">Home</a>
         <a href="/menu.html" aria-current="page">Menu</a>
         <a href="/#hours">Hours</a>
-        <a href="/#order-online">Order Online</a>
         <a href="/#contact">Contact</a>
       </nav>
       <div class="header-actions nav-actions">
-        <a class="btn btn-tertiary" href="tel:+17074471250" aria-label="Call Burrito Palace at (707) 447-1250">Call for Takeout</a>
-        <a class="btn btn-primary" href="https://www.doordash.com/store/burrito-palace-restaurant-vacaville-260476/1788766/?pickup=true" target="_blank" rel="noopener noreferrer" aria-label="Order Burrito Palace on DoorDash">Order on DoorDash</a>
-        <a class="btn btn-grubhub" href="https://www.grubhub.com/restaurant/burrito-palace-1100-marshall-rd-vacaville/7580688?pickup=true" target="_blank" rel="noopener noreferrer" aria-label="Order Burrito Palace on Grubhub">Order on Grubhub</a>
+        <a class="btn btn-tertiary" href="tel:+17074471250" aria-label="Call Burrito Palace at (707) 447-1250">Call</a>
+        <a class="btn btn-primary" href="https://www.doordash.com/store/burrito-palace-restaurant-vacaville-260476/1788766/?pickup=true" target="_blank" rel="noopener noreferrer" aria-label="Order Burrito Palace on DoorDash">DoorDash</a>
+        <a class="btn btn-grubhub" href="https://www.grubhub.com/restaurant/burrito-palace-1100-marshall-rd-vacaville/7580688?pickup=true" target="_blank" rel="noopener noreferrer" aria-label="Order Burrito Palace on Grubhub">Grubhub</a>
       </div>
     </div>
   </header>
@@ -1039,8 +1079,24 @@
       const sections = Array.from(document.querySelectorAll('.menu-section'));
       const accordions = Array.from(document.querySelectorAll('.accordion'));
       const chips = Array.from(document.querySelectorAll('.category-chip'));
+      const header = document.querySelector('.top-header');
+      const categoryBar = document.querySelector('.category-bar');
       const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       let applyingHash = false;
+
+      function setStickyOffsets() {
+        if (header) document.documentElement.style.setProperty('--header-height', header.offsetHeight + 'px');
+        if (categoryBar) document.documentElement.style.setProperty('--filter-height', categoryBar.offsetHeight + 'px');
+      }
+
+      setStickyOffsets();
+      window.addEventListener('load', setStickyOffsets);
+      window.addEventListener('resize', setStickyOffsets);
+      if ('ResizeObserver' in window) {
+        const stickyResizeObserver = new ResizeObserver(setStickyOffsets);
+        if (header) stickyResizeObserver.observe(header);
+        if (categoryBar) stickyResizeObserver.observe(categoryBar);
+      }
 
       function getPanel(button) { return document.getElementById(button.getAttribute('aria-controls')); }
       function setPanelHeight(panel, open) { panel.style.maxHeight = open ? panel.scrollHeight + 'px' : '0px'; }
@@ -1056,7 +1112,7 @@
       function recalcOpenPanels() { sections.forEach(section => { if (section.classList.contains('open')) setPanelHeight(getPanel(section.querySelector('.accordion')), true); }); }
       function setChip(target) { chips.forEach(chip => chip.classList.toggle('active', chip.dataset.target === target)); }
       function scrollToSection(section) {
-        const offset = document.querySelector('.top-header').offsetHeight + document.querySelector('.category-bar').offsetHeight + 12;
+        const offset = (header ? header.offsetHeight : 0) + (categoryBar ? categoryBar.offsetHeight : 0) + 12;
         window.scrollTo({ top: section.getBoundingClientRect().top + window.pageYOffset - offset, behavior: reduceMotion ? 'auto' : 'smooth' });
       }
       function updateHash(target) {
