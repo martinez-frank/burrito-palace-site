@@ -788,7 +788,7 @@
     .mascot-divider img{width:clamp(70px,6vw,76px);opacity:.78;flex:0 0 auto}
     .final-order{margin:clamp(30px,5vw,58px) 0 calc(76px + env(safe-area-inset-bottom));padding:clamp(30px,5vw,48px) 0;background:transparent;border-top:1px solid var(--divider);border-bottom:1px solid var(--divider);border-left:0;border-right:0;border-radius:0;box-shadow:none;display:grid;grid-template-columns:minmax(100px,130px) minmax(0,1fr) auto;gap:clamp(22px,4vw,38px);align-items:center}
     .final-order__mascot{width:clamp(110px,9vw,120px);height:auto}.final-order h2{font-size:clamp(2.35rem,4.7vw,3.75rem);line-height:.92;margin:.06em 0 .12em}.final-order p:not(.eyebrow){max-width:48ch}.final-order__actions{margin-top:0;justify-content:flex-end;align-items:center;flex-wrap:wrap}.final-order__actions .btn{white-space:nowrap}
-    .brand-banner{margin-top:0}@media (min-width:760px){.brand-banner{padding:var(--brand-banner-padding-block) 0}.brand-banner__mascot{width:var(--brand-banner-logo-size)}}
+    .brand-banner{margin-top:0}@media (min-width:760px){html{scroll-padding-top:calc(var(--header-height) + var(--filter-height) + 16px)}.menu-section{scroll-margin-top:calc(var(--header-height) + var(--filter-height) + 16px)}.brand-banner{padding:var(--brand-banner-padding-block) 0}.brand-banner__mascot{width:120px}.brand-banner__address{font-size:1.075rem;line-height:1.4}}
     @media (max-width:1080px) and (min-width:760px){.top-header .nav-container{grid-template-columns:auto 1fr auto;gap:10px}.nav-wordmark{display:none}.logo{height:clamp(86px,8vw,92px)}.nav-links{gap:12px;font-size:.86rem}.header-actions{gap:6px}.header-actions .btn{padding-inline:10px;font-size:.82rem}.final-order{grid-template-columns:minmax(96px,120px) minmax(0,1fr);}.final-order__actions{grid-column:2;justify-content:flex-start}}
     @media (max-width:759px){:root{--header-height:96px}.top-header .container{min-height:96px}.logo{height:clamp(90px,23vw,96px)}.hero{padding-top:12px}.hero-wordmark{height:clamp(56px,15vw,64px)}.hero-card::after{width:104px;height:104px;opacity:.15}.mascot-divider{gap:18px;margin:18px auto;max-width:78vw}.mascot-divider img{width:clamp(54px,15vw,62px)}.final-order{grid-template-columns:1fr;margin:28px 0 calc(var(--mobile-action-bar-height) + 36px);padding:30px 0;text-align:center;gap:16px}.final-order__mascot{width:clamp(78px,22vw,88px);margin-inline:auto}.final-order p:not(.eyebrow){margin-inline:auto}.final-order__actions{justify-content:stretch;width:100%;gap:10px}.final-order__actions .btn{width:100%;white-space:normal}.brand-banner__mascot{width:var(--brand-banner-logo-size);margin-inline:auto}}
     @media (max-width:430px){.hero-card::after{width:94px;height:94px}}
@@ -1223,7 +1223,7 @@
       function getScrollBehavior() { return reduceMotion || isMobileCategoryLayout() ? 'auto' : 'smooth'; }
       function scrollToSection(section) {
         setStickyOffsets();
-        const offset = (header ? header.offsetHeight : 0) + (categoryBar ? categoryBar.offsetHeight : 0) + 12;
+        const offset = (header ? header.offsetHeight : 0) + (categoryBar ? categoryBar.offsetHeight : 0) + 16;
         window.scrollTo({ top: section.getBoundingClientRect().top + window.pageYOffset - offset, behavior: getScrollBehavior() });
       }
       async function scrollToSectionAfterLayout(section, panels, sequence) {
