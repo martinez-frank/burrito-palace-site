@@ -794,9 +794,10 @@
 
 
     /* Mobile home/menu cleanup overrides */
-    .menu-page-intro{padding:clamp(18px,4vw,34px) 0 8px}
-    .menu-page-intro p{margin:4px 0 0;max-width:58ch;font-weight:600;color:var(--muted)}
+    .menu-page-intro{padding:clamp(18px,4vw,30px) 0 6px}
+    .menu-page-wordmark{display:none}
     .page-title{margin:0;font-size:clamp(2.25rem,7vw,4rem);line-height:.95}
+    .footer-links{justify-content:center;gap:clamp(14px,2.4vw,24px)}
     @media (max-width:759px){
       :root{--header-height:132px;--filter-height:50px}
       body{padding-bottom:calc(78px + env(safe-area-inset-bottom))}
@@ -806,7 +807,8 @@
       .nav-links,.top-header .nav-links{display:flex!important;width:100%;justify-content:center;gap:clamp(7px,2.6vw,12px);font-size:clamp(.72rem,3.25vw,.82rem);white-space:nowrap;flex-wrap:nowrap}
       .nav-links a{padding:6px 0}
       .header-actions{display:none!important}
-      .menu-page-intro{padding:16px 0 6px;text-align:center}
+      .menu-page-intro{padding:12px 0 4px;text-align:center}
+      .menu-page-wordmark{display:block;width:min(180px,48vw);height:auto;margin:0 auto 10px}
       .page-title{font-size:2.4rem}
       .category-scroll{padding:7px max(2px,env(safe-area-inset-left)) 7px max(2px,env(safe-area-inset-right));gap:7px;scroll-padding-inline:12px}
       .category-chip{padding:8px 10px;min-height:40px;font-size:.82rem}
@@ -839,8 +841,12 @@
   <main id="all">
     <div class="container">
       <header class="menu-page-intro">
+        <img
+          src="/images/burrito-palace.png"
+          alt="Burrito Palace"
+          class="menu-page-wordmark"
+        >
         <h1 class="page-title">Menu</h1>
-        <p>Browse Burrito Palace favorites by category.</p>
       </header>
     </div>
 
@@ -1104,7 +1110,7 @@
         <p>1100 Marshall Road, Vacaville, CA 95687 · <a href="tel:+17074471250">(707) 447-1250</a></p>
       </div>
       <nav class="footer-links" aria-label="Footer navigation">
-        <a href="/">Home</a><a href="/menu.html">Menu</a><a href="/#hours">Hours</a><a href="https://www.google.com/maps/search/?api=1&query=1100+Marshall+Road+Vacaville+CA+95687" target="_blank" rel="noopener noreferrer">Directions</a><a href="https://www.doordash.com/store/burrito-palace-restaurant-vacaville-260476/1788766/?pickup=true" target="_blank" rel="noopener noreferrer">DoorDash</a><a href="https://www.grubhub.com/restaurant/burrito-palace-1100-marshall-rd-vacaville/7580688?pickup=true" target="_blank" rel="noopener noreferrer">Grubhub</a>
+        <a href="/">Home</a><a href="/menu.html">Menu</a><a href="/#hours">Hours</a><a href="https://www.google.com/maps/search/?api=1&query=1100+Marshall+Road+Vacaville+CA+95687" target="_blank" rel="noopener noreferrer">Directions</a>
       </nav>
     </div>
   </footer>
