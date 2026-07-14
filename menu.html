@@ -823,6 +823,58 @@
     /* Canonical mobile branding sizes: keep after breakpoint-specific rules. */
     @media (max-width:759px){.logo,.brand-banner__mascot{width:var(--mobile-mascot-size);height:auto}.brand-banner{padding:var(--brand-banner-padding-block) 0}}
 
+
+    /* Desktop header alignment: match the approved homepage two-part geometry. */
+    @media (min-width:801px){
+      :root{--header-height:100px}
+      .top-header{min-height:var(--header-height)}
+      .top-header .container,
+      .top-header .nav-container{
+        display:grid;
+        grid-template-columns:auto minmax(0,1fr);
+        align-items:center;
+        flex-wrap:nowrap;
+        gap:clamp(16px,2vw,24px);
+        min-height:100px;
+        padding:0;
+      }
+      .top-header .nav-brand{
+        min-width:0;
+        gap:14px;
+        flex:0 1 auto;
+      }
+      .top-header .logo{
+        height:clamp(92px,7vw,100px);
+        width:auto;
+        transform:none;
+      }
+      .top-header .nav-wordmark{
+        display:block;
+        height:clamp(54px,4.4vw,62px);
+        width:auto;
+        transform:none;
+      }
+      .top-header .nav-menu,
+      .top-header .nav-links{
+        justify-self:end;
+        justify-content:flex-end;
+        flex-wrap:nowrap;
+        gap:clamp(14px,1.6vw,20px);
+        font-size:.93rem;
+        white-space:nowrap;
+        min-width:0;
+      }
+    }
+    @media (min-width:801px) and (max-width:1080px){
+      .top-header .container,
+      .top-header .nav-container{gap:12px}
+      .top-header .logo{height:92px}
+      .top-header .nav-wordmark{height:54px}
+      .top-header .nav-menu,
+      .top-header .nav-links{gap:12px;font-size:.88rem}
+    }
+
+
   </style>
 </head>
 <body>
